@@ -5,6 +5,7 @@ from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_C
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
 from data.constants import QNO_RECT,SUBMIT_RECT
+from data.constants import option_button_font
 
 
 
@@ -205,7 +206,7 @@ class Options:
         self.buttons.clear()
 
         for rect, text in zip(self.rects, text_options):
-            self.buttons.append(Button(rect, text=text))
+            self.buttons.append(Button(rect, text=text,font=option_button_font))
 
     def draw(self, text_options, mouse_pos, mouse_pressed, saved_states):
         # Create buttons once per question change
