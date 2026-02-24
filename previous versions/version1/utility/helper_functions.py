@@ -1,7 +1,6 @@
 import pygame
 from data.constants import WINDOW_WIDTH
 from data.constants import PREV_RECT,NEXT_RECT
-from data.constants import nav_button_font
 
 
 ### DO NOT CHANGE
@@ -10,8 +9,8 @@ def get_prev_next_buttons():
 
 
     ### PREVIOUS AND NEXT BUTTON
-    prev_button = Button(PREV_RECT,font=nav_button_font,text="Prev page")
-    next_button = Button(NEXT_RECT,font = nav_button_font,text="Next page") 
+    prev_button = Button(PREV_RECT,text="Prev page")
+    next_button = Button(NEXT_RECT,text="Next page") 
     return prev_button,next_button
 
 

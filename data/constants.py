@@ -18,35 +18,102 @@ SELECTED = "selected"
 
 
 
-### COLORS
 
-BLACK = (0,0,0),
-WHITE = (255,255,255)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,0,255)
+## Attempt 1
 
+# ## ------------------------------
+# FRONT_BG_COLOR = (120, 25, 55)
+# FRONT_OVERLAY_BG_COLOR = (140, 35, 65,120)
 
-BG_COLOR = (100,100,100)
+# BASE_COLOR     = (165, 180, 245)
+# HOVER_COLOR    = (145, 160, 225)
+# PRESSED_COLOR    = (110, 125, 190)
+# SELECTED_COLOR   = (160, 90, 255) ## original
 
+# POPUP_RECT_COLOR = (180, 145, 170)
+# TITLE_BOX_COLOR = (180, 145, 170)
+# TEXT_COLOR = (180, 145, 170)
 
+# TITLE_TEXT_COLOR = BUTTON_TEXT_COLOR     = (25, 25, 35)
 
-## BUTTON COLORS
-BASE_COLOR=(46, 56, 86)
-HOVER_COLOR=(89, 94, 109)
-PRESSED_COLOR=(70, 75, 95)
-SELECTED_COLOR = (120,2,250)
-
-
-TEXT_COLOR=(255, 255, 255)
-HOVER_TEXT_COLOR = (30,40,50)
+# #--------------------------------
 
 
-## FRONT AND END PAGE
 
 
-## QUIZ PAGE
-QUIZ_BG_COLOR = (120,5,200)
+# ### Attempt 2 --------------
+# FRONT_BG_COLOR         = (10, 18, 38)        # deep midnight navy
+# FRONT_OVERLAY_BG_COLOR = (20, 30, 65, 140)
+
+
+# BASE_COLOR             = (255, 145, 40)      # neon window orange
+# HOVER_COLOR            = (255, 170, 70)
+# PRESSED_COLOR          = (220, 115, 20)
+# SELECTED_COLOR         = (255, 200, 120)     # glowing warm selection
+
+# TITLE_BOX_COLOR        = (18, 28, 60)
+
+# TITLE_TEXT_COLOR             = (245, 245, 255)
+
+# BUTTON_TEXT_COLOR     = (25, 25, 35)
+# ### -------------------
+
+
+
+
+
+
+
+
+
+
+### ===================== COLOR SYSTEM =====================
+
+# -------- Foundation (Backgrounds) --------
+FRONT_BG_COLOR = (10, 18, 38)      # front page
+QUIZ_BG_COLOR  = (15, 20, 45)      # quiz page (slightly deeper)
+END_BG_COLOR = (10, 18, 38)       # end page
+
+
+# -------- Surface Panels (Non-Interactive UI) --------
+SURFACE_DARK_COLOR  = (18, 28, 60)   # title boxes / deeper panels
+SURFACE_COLOR       = (28, 40, 85)   # question box
+SURFACE_LIGHT_COLOR = (35, 50, 95)   # popup panels / elevated surfaces
+
+TITLE_BOX_COLOR    = SURFACE_DARK_COLOR
+QUESTION_BOX_COLOR = SURFACE_COLOR
+QUIZ_POPUP_COLOR   = SURFACE_LIGHT_COLOR
+FINAL_BOX_COLOR    = SURFACE_COLOR
+FRONT_POPUP_COLOR       = (25, 40, 80)
+
+
+
+# -------- Accent (Interactive Elements Only) --------
+BASE_COLOR     = (255, 145, 40)   # idle button
+HOVER_COLOR    = (255, 170, 70)
+PRESSED_COLOR  = (220, 115, 20)
+SELECTED_COLOR = (255, 200, 120)
+
+
+# -------- Overlays --------
+FRONT_OVERLAY_BG_COLOR      = (20, 30, 65, 140)   # subtle front tint
+QUIZ_POPUP_OVERLAY_COLOR    = (5, 10, 25, 180)    # darker modal overlay
+
+
+# -------- Text Colors --------
+TEXT_COLOR = (180, 145, 170)
+PRIMARY_TEXT_COLOR   = (235, 240, 255)   # titles, question text
+SECONDARY_TEXT_COLOR = (190, 200, 230)   # softer labels
+BUTTON_TEXT_COLOR    = (25, 25, 35)      # text on orange buttons
+
+
+# -------- Utility --------
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+### ========================================================
+
+
 
 
 
@@ -59,9 +126,17 @@ WINDOW_HEIGHT = 700
 
 ### FONTS
 font = pygame.font.SysFont('arial',20)
-title_font = pygame.font.SysFont('arial',35)
-button_font = pygame.font.SysFont('arial',25)
-difficulty_font = pygame.font.SysFont('arial',30)
+
+title_font      = pygame.font.SysFont('segoe ui', 36)
+button_font     = pygame.font.SysFont('segoe ui', 17)
+front_button_font     = pygame.font.SysFont('segoe ui', 22)
+popup_button_font     = pygame.font.SysFont('segoe ui', 18)
+nav_button_font     = pygame.font.SysFont('segoe ui', 18)
+difficulty_font = pygame.font.SysFont('segoe ui', 30)
+question_box_font = pygame.font.SysFont('segoe ui', 26)
+end_score_font = pygame.font.SysFont('segoe ui',22)
+default_font   = pygame.font.SysFont('segoe ui', 20)
+
 
 
 
@@ -71,38 +146,133 @@ difficulty_font = pygame.font.SysFont('arial',30)
 
 ## -------------------- FRONT PAGE ------------------------
 
-# Button rects
-FRONT_POPUP_RECT = pygame.Rect(20, 120, 260, 360)
-EASY_BUTTON_RECT = pygame.Rect(50,160,200,80)
-MEDIUM_BUTTON_RECT = pygame.Rect(50,255,200,80)
-HARD_BUTTON_RECT = pygame.Rect(50,355,200,80)
 
-PLAY_BUTTON_RECT = pygame.Rect(50,WINDOW_HEIGHT//2 - 50,400,50)
-DIFFICULTY_BUTTON_RECT = pygame.Rect(50,(WINDOW_HEIGHT//2) + 20,400,50)
+### STRUCTURE
+
+# title
+# description of the game
+# (Optional) - > High score 
+
+# play button
+# difficulty buttton - > difficulty popup
+
+# difficulty popup -> easy button,medium button, hard button 
+
+# Current mode
 
 
+
+
+
+### CHANGES -----------
+# --- POPUP POSITION (overlay style) ---
+
+
+FRONT_PAGE_OFFSET = 50
+
+
+FRONT_DIFFICULTY_TOP = (WINDOW_HEIGHT // 2) + 20
+POPUP_DIFFICULTY_TOP = FRONT_DIFFICULTY_TOP - 10
+
+
+## POPUP WIDTH AND HEIGHT
+POPUP_DIFFICULTY_WIDTH = 400
+POPUP_DIFFICULTY_HEIGHT = 150
+
+## POPUP INNER DIMENSIONS
+POPUP_RECT_PADDING = 20
+POPUP_COL_GAP = 15
+
+usable_width_popup_rect = POPUP_DIFFICULTY_WIDTH - 2 * POPUP_RECT_PADDING
+
+
+## POPUP BUTTON WIDTH AND HEIGHT
+POPUP_DIFFICULTY_BUTTON_WIDTH = (usable_width_popup_rect - 2 * POPUP_COL_GAP) // 3
+POPUP_DIFFICULTY_BUTTON_HEIGHT = 80
+
+
+POPUP_LEFT = FRONT_PAGE_OFFSET  # matches difficulty button x
+
+
+FRONT_POPUP_RECT = pygame.Rect(
+    POPUP_LEFT,
+    POPUP_DIFFICULTY_TOP,
+    POPUP_DIFFICULTY_WIDTH,
+    POPUP_DIFFICULTY_HEIGHT
+)
+
+
+
+
+POPUP_DIFFICULTY_BUTTON_TOP = (
+    POPUP_DIFFICULTY_TOP
+    + (POPUP_DIFFICULTY_HEIGHT - POPUP_DIFFICULTY_BUTTON_HEIGHT) // 2
+)
+
+
+## DIFFICULTY BUTTON POSITIONS
+EASY_BUTTON_X = POPUP_LEFT + POPUP_RECT_PADDING
+MEDIUM_BUTTON_X = EASY_BUTTON_X + POPUP_DIFFICULTY_BUTTON_WIDTH + POPUP_COL_GAP
+HARD_BUTTON_X = MEDIUM_BUTTON_X + POPUP_DIFFICULTY_BUTTON_WIDTH + POPUP_COL_GAP
+
+
+# POPUP/Button rects
+FRONT_POPUP_RECT = pygame.Rect(FRONT_PAGE_OFFSET, FRONT_DIFFICULTY_TOP, 
+                               POPUP_DIFFICULTY_WIDTH, 
+                               POPUP_DIFFICULTY_HEIGHT)
+
+EASY_BUTTON_RECT = pygame.Rect(EASY_BUTTON_X,
+                               POPUP_DIFFICULTY_BUTTON_TOP,
+                               POPUP_DIFFICULTY_BUTTON_WIDTH,
+                               POPUP_DIFFICULTY_BUTTON_HEIGHT)
+MEDIUM_BUTTON_RECT = pygame.Rect(MEDIUM_BUTTON_X,
+                                 POPUP_DIFFICULTY_BUTTON_TOP,
+                                 POPUP_DIFFICULTY_BUTTON_WIDTH,
+                                 POPUP_DIFFICULTY_BUTTON_HEIGHT)
+HARD_BUTTON_RECT = pygame.Rect(HARD_BUTTON_X,
+                               POPUP_DIFFICULTY_BUTTON_TOP,
+                               POPUP_DIFFICULTY_BUTTON_WIDTH,
+                               POPUP_DIFFICULTY_BUTTON_HEIGHT)
+
+
+
+
+### NON POPUP RECTS
+PLAY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,WINDOW_HEIGHT//2 - 50,400,50)
+DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
+EXIT_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 100,400,50)
+
+
+## TEXT BOX INFORMATION
+FRONT_TEXT_BOX_OFFEST = 20
 ## Text box rects
-TITLE_BOX_RECT = pygame.Rect(50,WINDOW_HEIGHT//2 - 200,400,50)
-MODE_BOX_RECT = pygame.Rect(50,WINDOW_HEIGHT - 150,WINDOW_WIDTH - 100,100)
+TITLE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFEST,160,
+                             WINDOW_WIDTH-2*FRONT_TEXT_BOX_OFFEST,100)
+MODE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFEST,WINDOW_HEIGHT - 150,
+                            WINDOW_WIDTH-2*FRONT_TEXT_BOX_OFFEST,80)
 
 
 
 
 ### ------------------------ QUIZ PAGE ----------------------
 
+
+## QUIZ MARGINS
 QUIZ_LEFT_MARGIN = 20
-QUIZ_TOP_MARGIN = 20
+QUIZ_TOP_MARGIN = 40
 
-
+### CONTAINER DIMENSIONS
 CONTAINER_WIDTH = WINDOW_WIDTH - 2*QUIZ_LEFT_MARGIN
 CONTAINER_HEIGHT = WINDOW_HEIGHT - 2*QUIZ_TOP_MARGIN
 CONTAINER_SPACING = 25
 
-
-NAV_BUTTON_WIDTH = 100
+## NAVBAR DIMENSIONS
+NAV_BUTTON_WIDTH = 110
 NAV_BAR_HEIGHT = 50
 NAV_BAR_SPACING = 30
 
+
+### NAVBAR RECTS
 PREV_RECT = pygame.Rect(QUIZ_LEFT_MARGIN,
                         QUIZ_TOP_MARGIN,
                         NAV_BUTTON_WIDTH,
@@ -116,8 +286,6 @@ HINT_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + 2*NAV_BUTTON_WIDTH + 2*NAV_BAR_SPACIN
                         QUIZ_TOP_MARGIN,
                         50,50)
 
-
-# container_rect = pygame.Rect(10,10,WINDOW_WIDTH,100)
 QNO_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + NAV_BUTTON_WIDTH + NAV_BAR_SPACING,
                        QUIZ_TOP_MARGIN,
                        NAV_BUTTON_WIDTH,
@@ -125,16 +293,11 @@ QNO_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + NAV_BUTTON_WIDTH + NAV_BAR_SPACING,
 
 
 
+
+
 QUESTION_TOP_MARGIN = QUIZ_TOP_MARGIN + NAV_BAR_HEIGHT + CONTAINER_SPACING
 QUESTION_BOX_WIDTH = WINDOW_WIDTH - 2 * QUIZ_LEFT_MARGIN
 QUESTION_BOX_HEIGHT = 300
-
-
-
-
-
-
-
 
 
 QUIZ_POPUP_RECT = pygame.Rect(
@@ -148,6 +311,7 @@ QUIZ_POPUP_RECT = pygame.Rect(
 
 COLUMN_GAP = 30
 ROW_GAP = 30
+
 
 # OPTIONS_TOP =  QUESTION_BOX_HEIGHT + NAV_BAR_HEIGHT  + 2* CONTAINER_SPACING
 OPTIONS_TOP =  QUESTION_TOP_MARGIN + QUESTION_BOX_HEIGHT + CONTAINER_SPACING
@@ -189,19 +353,24 @@ OPTIONS_RECTS = [
 
 
 
-
-
-
-
-
-
-
-
 ### -----------------------  FINAL PAGE ---------------------
 
+END_PAGE_OFFSET = 30
 
 ## Rects
-SCORE_BOX_RECT = pygame.Rect(50,WINDOW_HEIGHT//2 - 200,400,50)
-DIFFICULTY_BOX_RECT = pygame.Rect(50,WINDOW_HEIGHT//2 - 100,400,120)
+SCORE_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 200,
+                             WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
+# DIFFICULTY_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 100,
+#                                   WINDOW_WIDTH-2*END_PAGE_OFFSET,120)
+REMARK_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 120,
+                                  WINDOW_WIDTH-2*END_PAGE_OFFSET,160)
 
-RETURN_BUTTON_RECT = pygame.Rect(50,WINDOW_HEIGHT//2 + 200,400,50)
+RETURN_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 100,
+                                 WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
+
+END_EXIT_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 175,
+                                   WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
+
+
+
+

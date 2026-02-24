@@ -1,7 +1,7 @@
 import pygame
 from utility.helper_functions import get_prev_next_buttons
 from utility.blueprints import Button,TextBox
-from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT
+from data.constants import BASE_COLOR, HINT_RECT, OPTIONS_RECTS,PRESSED_COLOR,HOVER_COLOR, QUIZ_POPUP_RECT,SELECTED_COLOR,TEXT_COLOR
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
 from data.constants import QNO_RECT,SUBMIT_RECT
@@ -35,14 +35,13 @@ class NavBar:
 
 
 
-        self.popup_color = QUIZ_POPUP_COLOR
-        self.text_color = BUTTON_TEXT_COLOR
-        self.popup_text_color = PRIMARY_TEXT_COLOR
+        self.popup_color = SELECTED_COLOR
+        self.text_color = TEXT_COLOR
 
         # Buttons
         self.prev_button,self.next_button = get_prev_next_buttons()
-        self.submit_button = Button(SUBMIT_RECT,text="Submit",font = font)
-        self.hint_button = Button(HINT_RECT,text="HB",font=font,border_radius=50)
+        self.submit_button = Button(SUBMIT_RECT,text="Submit")
+        self.hint_button = Button(HINT_RECT,"HB",border_radius=50)
 ###
 
         ## Rects
@@ -55,14 +54,8 @@ class NavBar:
 
         
         
-        self.popup_textbox = TextBox(self.screen,
-                                     self.font,
-                                     self.popup_rect,
-                                     self.popup_color,
-                                     self.popup_text_color)
-        ### Overlay details
-        self.overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
-        self.overlay.fill(QUIZ_POPUP_OVERLAY_COLOR)   # adjust alpha if needed
+        self.popup_textbox = TextBox(self.screen,self.font,self.popup_rect,self.popup_color,self.text_color)
+
 
 
 
@@ -122,11 +115,7 @@ class NavBar:
 
     ## Question number box in the nav bar (different from the main question box)
     def qnobox_display(self,qno):
-        qno_box = TextBox(self.screen,
-                          self.font,
-                          self.question_rect,
-                          QUESTION_BOX_COLOR,
-                          PRIMARY_TEXT_COLOR)
+        qno_box = TextBox(self.screen,self.font,self.question_rect,BASE_COLOR,SELECTED_COLOR)
         qno_box.draw_textbox(f'Qno: {qno + 1}')
 
 
@@ -143,7 +132,6 @@ class NavBar:
 
 
         if hint_open:
-            self.screen.blit(self.overlay,(0,0))
             text = "Hint not available" if not text else text
             self.popup_textbox.draw_textbox(text=text,border_radius=20)
      
@@ -172,8 +160,6 @@ class QuestionBox:
         self.top = QUESTION_TOP_MARGIN
         self.box_width = QUESTION_BOX_WIDTH
         self.box_height = QUESTION_BOX_HEIGHT
-        self.box_color = QUESTION_BOX_COLOR
-        self.text_color = PRIMARY_TEXT_COLOR
 
 
     def draw_question_box(self,text):
@@ -184,7 +170,7 @@ class QuestionBox:
                                        self.top,
                                        self.box_width,
                                        self.box_height),
-                                   self.box_color,self.text_color)
+                                   BASE_COLOR,TEXT_COLOR)
         
         question_textbox.draw_textbox(text,'top_left')
 

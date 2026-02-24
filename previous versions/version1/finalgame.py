@@ -1,13 +1,13 @@
 import pygame
 import sys
-
-from data.constants import IDLE,SELECTED
+import random
+from data.constants import IDLE,SELECTED,BG_COLOR
 from data.constants import WINDOW_WIDTH,WINDOW_HEIGHT
 from utility.blueprints import  Button,TextBox
 from utility.generate import QuestionGenerator
-from utility.components import NavBar
+from utility.components import NavBar,Options,QuestionBox
 from data.questions import easy_questions,medium_questions,hard_questions
-from utility.layout import EndPage, QuizPage,FrontPage
+from utility.layout import QuizPage,FrontPage
 
 
 
@@ -20,7 +20,7 @@ pygame.font.init()
 WIDTH,HEIGHT = WINDOW_WIDTH,WINDOW_HEIGHT
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
-pygame.display.set_caption('Final game')
+pygame.display.set_caption('Four page memory')
 font = pygame.font.SysFont('arial',20)
 clock = pygame.time.Clock()
 
@@ -95,7 +95,7 @@ return_button = Button(pygame.Rect(50,HEIGHT//2 + 200,400,50),'Return to main me
 
 
 ### LAYOUT DETAILS
-navbar = NavBar(screen,font)
+# navbar = NavBar(screen,font)
 
 # options = Options(screen)
 
@@ -123,10 +123,6 @@ Q_generator = QuestionGenerator(total=TOTAL_PAGES)
 ## answers selected
 answers_selected = [[IDLE]*4 for _ in range(TOTAL_PAGES)]
 
-
-
-
-endpage = EndPage(screen)
 
 
 ### PAGE SWITCH DETAILS -----
@@ -182,9 +178,6 @@ while running:
             random_questions = Q_generator.generate()[difficulty_text]
             quiz = QuizPage(screen, font, random_questions, difficulty_text)
             current_page = QUESTION_PAGE
-        if play_event == 'EXIT':
-            running = False
-            break
 
 
     elif current_page == QUESTION_PAGE:
@@ -198,17 +191,14 @@ while running:
 
     elif current_page == FINAL_PAGE:
 
-        endpage.draw(screen, TOTAL_SCORE, TOTAL_PAGES, difficulty_text)
+        screen.fill(BLACK)
+        score_box.draw_textbox(f'You have scored {TOTAL_SCORE}/{TOTAL_PAGES}')
+        difficulty_box.draw_textbox(f'You have selected {difficulty_text}')
+        return_button.draw(screen)
 
-        action = endpage.update(mouse_pos, mouse_pressed)
-
-        if action == "GO_TO_FRONT":
+        if return_event == 'CLICK':
             current_page = FRONT_PAGE
             difficulty_text = easy_button.text
-        if action == 'EXIT GAME':
-            running = False
-            break
-
 
 
 
