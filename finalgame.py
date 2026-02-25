@@ -11,25 +11,20 @@ from utility.layout import EndPage, QuizPage,FrontPage
 pygame.init()
 pygame.font.init()
 
-WIDTH,HEIGHT = WINDOW_WIDTH,WINDOW_HEIGHT
 
-screen = pygame.display.set_mode((WIDTH,HEIGHT))
+screen = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT))
 pygame.display.set_caption('Final game')
-font = pygame.font.SysFont('arial',20)
 clock = pygame.time.Clock()
 
 
 
-#### FRONT PAGE DETAILS -----------
 first_page = FrontPage(screen)
+endpage = EndPage(screen)
 
 
 
 TOTAL_PAGES = 8
-
-## scores tally
 TOTAL_SCORE = 0
-score_increment = [0 for _ in range(TOTAL_PAGES)]
 
 
 
@@ -38,11 +33,9 @@ Q_generator = QuestionGenerator(total=TOTAL_PAGES)
 
 ## answers selected
 answers_selected = [[IDLE]*4 for _ in range(TOTAL_PAGES)]
+# Score increment
+score_increment = [0 for _ in range(TOTAL_PAGES)]
 
-
-
-
-endpage = EndPage(screen)
 
 
 ### PAGE SWITCH DETAILS -----
@@ -80,7 +73,7 @@ while running:
 
         if play_event == "CLICK":
             random_questions = Q_generator.generate()[difficulty_text]
-            quiz = QuizPage(screen, font, random_questions, difficulty_text)
+            quiz = QuizPage(screen, random_questions, difficulty_text)
             current_page = QUIZ_PAGE
         if play_event == 'EXIT':
             running = False
@@ -113,7 +106,11 @@ while running:
     pygame.display.flip()
     clock.tick(60)
 
-print(score_increment)
-print(f'Total score is {TOTAL_SCORE}/{TOTAL_PAGES}')
+
+### Score testing changes below
+# print(score_increment)
+# print(f'Total score is {TOTAL_SCORE}/{TOTAL_PAGES}')
+
+
 pygame.quit()
 sys.exit()

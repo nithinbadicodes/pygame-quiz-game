@@ -154,9 +154,8 @@ class FrontPage:
 
 
 class QuizPage:
-    def __init__(self, screen, font, questions, difficulty_text):
+    def __init__(self, screen, questions, difficulty_text):
         self.screen = screen
-        self.font = font
         self.questions = questions
         self.difficulty_text = difficulty_text
 

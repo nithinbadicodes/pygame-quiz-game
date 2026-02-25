@@ -1,69 +1,39 @@
 import pygame
 
-
+### ==================== DO NOT MODIFY ============================
 
 pygame.init()
 pygame.font.init()
 
-#### FIX --> ONE VARIABLES FOR DIFFERENT STATES 
 
+
+### WINDOW DIMENSIONS
+WINDOW_WIDTH = 500
+WINDOW_HEIGHT = 700
+
+
+### FONTS
+font = pygame.font.SysFont('segoe ui',20)
+
+title_font      = pygame.font.SysFont('segoe ui', 36)
+button_font     = pygame.font.SysFont('segoe ui', 17)
+option_button_font     = pygame.font.SysFont('segoe ui', 16)
+front_button_font     = pygame.font.SysFont('segoe ui', 22)
+popup_button_font     = pygame.font.SysFont('segoe ui', 18)
+nav_button_font     = pygame.font.SysFont('segoe ui', 18)
+difficulty_font = pygame.font.SysFont('segoe ui', 30)
+question_box_font = pygame.font.SysFont('segoe ui', 26)
+end_score_font = pygame.font.SysFont('segoe ui',22)
+default_font   = pygame.font.SysFont('segoe ui', 20)
+
+
+#### FIX --> ONE VARIABLES FOR DIFFERENT STATES 
 # STATES OF BUTTON
 IDLE = "idle"
 HOVERED = "hovered"
 PRESSED = "pressed"
 DISABLED = "disabled"
 SELECTED = "selected"
-
-
-
-
-
-
-## Attempt 1
-
-# ## ------------------------------
-# FRONT_BG_COLOR = (120, 25, 55)
-# FRONT_OVERLAY_BG_COLOR = (140, 35, 65,120)
-
-# BASE_COLOR     = (165, 180, 245)
-# HOVER_COLOR    = (145, 160, 225)
-# PRESSED_COLOR    = (110, 125, 190)
-# SELECTED_COLOR   = (160, 90, 255) ## original
-
-# POPUP_RECT_COLOR = (180, 145, 170)
-# TITLE_BOX_COLOR = (180, 145, 170)
-# TEXT_COLOR = (180, 145, 170)
-
-# TITLE_TEXT_COLOR = BUTTON_TEXT_COLOR     = (25, 25, 35)
-
-# #--------------------------------
-
-
-
-
-# ### Attempt 2 --------------
-# FRONT_BG_COLOR         = (10, 18, 38)        # deep midnight navy
-# FRONT_OVERLAY_BG_COLOR = (20, 30, 65, 140)
-
-
-# BASE_COLOR             = (255, 145, 40)      # neon window orange
-# HOVER_COLOR            = (255, 170, 70)
-# PRESSED_COLOR          = (220, 115, 20)
-# SELECTED_COLOR         = (255, 200, 120)     # glowing warm selection
-
-# TITLE_BOX_COLOR        = (18, 28, 60)
-
-# TITLE_TEXT_COLOR             = (245, 245, 255)
-
-# BUTTON_TEXT_COLOR     = (25, 25, 35)
-# ### -------------------
-
-
-
-
-
-
-
 
 
 
@@ -90,9 +60,9 @@ FRONT_POPUP_COLOR       = (25, 40, 80)
 
 # -------- Accent (Interactive Elements Only) --------
 BASE_COLOR     = (255, 145, 40)   # idle button
-HOVER_COLOR    = (255, 170, 70)
-PRESSED_COLOR  = (220, 115, 20)
-SELECTED_COLOR = (255, 200, 120)
+HOVER_COLOR    = (255, 170, 70)    # hovered button
+PRESSED_COLOR  = (220, 115, 20)     
+SELECTED_COLOR = (255, 200, 120)    # selected button
 
 
 # -------- Overlays --------
@@ -101,7 +71,7 @@ QUIZ_POPUP_OVERLAY_COLOR    = (5, 10, 25, 180)    # darker modal overlay
 
 
 # -------- Text Colors --------
-TEXT_COLOR = (180, 145, 170)
+TEXT_COLOR = (180, 145, 170)        # default dummy text color
 PRIMARY_TEXT_COLOR   = (235, 240, 255)   # titles, question text
 SECONDARY_TEXT_COLOR = (190, 200, 230)   # softer labels
 BUTTON_TEXT_COLOR    = (25, 25, 35)      # text on orange buttons
@@ -115,55 +85,7 @@ WHITE = (255, 255, 255)
 
 
 
-
-
-
-
-### DIMENSIONS
-WINDOW_WIDTH = 500
-WINDOW_HEIGHT = 700
-
-
-### FONTS
-font = pygame.font.SysFont('arial',20)
-
-title_font      = pygame.font.SysFont('segoe ui', 36)
-button_font     = pygame.font.SysFont('segoe ui', 17)
-option_button_font     = pygame.font.SysFont('segoe ui', 16)
-front_button_font     = pygame.font.SysFont('segoe ui', 22)
-popup_button_font     = pygame.font.SysFont('segoe ui', 18)
-nav_button_font     = pygame.font.SysFont('segoe ui', 18)
-difficulty_font = pygame.font.SysFont('segoe ui', 30)
-question_box_font = pygame.font.SysFont('segoe ui', 26)
-end_score_font = pygame.font.SysFont('segoe ui',22)
-default_font   = pygame.font.SysFont('segoe ui', 20)
-
-
-
-
-
-
-### RECTS
-
 ## -------------------- FRONT PAGE ------------------------
-
-
-### STRUCTURE
-
-# title
-# description of the game
-# (Optional) - > High score 
-
-# play button
-# difficulty buttton - > difficulty popup
-
-# difficulty popup -> easy button,medium button, hard button 
-
-# Current mode
-
-
-
-
 
 ### CHANGES -----------
 # --- POPUP POSITION (overlay style) ---
