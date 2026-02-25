@@ -12,105 +12,6 @@ pygame.init()
 pygame.font.init()
 
 
-# ### ------------ My function from scratch ---------------
-# ### REFERENCE
-# def wrap_text(rect,font,text="",offset=10,line_spacing = 30):
-    
-    
-#     # inner_rect = pygame.Rect(offset,offset,rect.get_width() - 2 * offset,rect.get_height() - 2*offset)
-#     inner_rect = get_rect(rect).inflate(-2*offset,-2*offset)
-#     words = text.split(" ")
-#     lines = []
-#     current = ""
-#     top = inner_rect.top + 10
-#     spacings = [top]
-#     for word in words:
-#         test_line = current + word + " "
-#         if font.size(test_line)[0] <= inner_rect.width:
-#             current = test_line
-#         else:
-#             lines.append(current)
-#             current = word + " "
-#             top += line_spacing
-#             spacings.append(top)
-
-#     lines.append(current)
-    
-#     return inner_rect,lines,spacings
-
-
-# ### REFERENCE
-# def draw_popup(screen,font,popup_text = "",color = (0,0,0),text_color = (255,255,255)):
-
-
-    
-#     popup_rect = pygame.draw.rect(screen,
-#                           color,
-#                           pygame.Rect(100,screen.get_height()//2-120,screen.get_width() - 200,200),
-#                           border_radius=12)
-    
-#     if popup_text:
-#         text_surf = font.render(popup_text,True,text_color)
-#         text_rect = text_surf.get_rect(center=popup_rect.center)
-
-#         screen.blit(text_surf,text_rect)
-
-
-
-# ### REFERENCE
-# def hint_box_popup(screen,font,hint_event,hint_open,text):
-    
-#     ## Render popup box
-#     if hint_event == "CLICK":
-#         hint_open = not hint_open
-
-
-#     if hint_open:
-#         draw_popup(screen,font,popup_text=text)
-        
-#     return hint_open
-
-
-# ### REFERENCE
-# def prev_next_display(screen, mouse_pos, mouse_pressed, prev_button, next_button, page):
-#     if page == "FRONT":
-#         prev_button.state = "disabled"
-#         next_button.state = "enabled"
-
-#     elif page == "END":
-#         prev_button.state = "enabled"
-#         next_button.state = "disabled"
-
-#     else:  # MIDDLE
-#         prev_button.state = "enabled"
-#         next_button.state = "enabled"
-
-#     prev_event = prev_button.update(mouse_pos, mouse_pressed)
-#     next_event = next_button.update(mouse_pos, mouse_pressed)
-
-#     if prev_event == "CLICK":
-#         return "PREV"
-
-#     if next_event == "CLICK":
-#         return "NEXT"
-
-#     prev_button.draw(screen)
-#     next_button.draw(screen)
-
-#     return None
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Button:
     def __init__(
         self,
@@ -138,11 +39,6 @@ class Button:
         self.text_color = text_color
         self.border_radius = border_radius
 
-
-        
-
-        # self.text_surf = self.font.render(text, True, text_color)
-        # self.text_rect = self.text_surf.get_rect(center=rect.center)
 
         self.state = IDLE
         self._pressed_last_frame = False
@@ -298,10 +194,6 @@ class TextBox:
         
         self.display_text(text,align)
         
-        
-        # text_surf,text_rect = self.rendered_text()
-
-        # self.screen.blit(text_surf,text_rect)
 
 
         

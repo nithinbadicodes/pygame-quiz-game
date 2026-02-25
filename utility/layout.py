@@ -5,7 +5,7 @@ from utility.components import NavBar,QuestionBox,Options
 from utility.blueprints import Button,TextBox
 
 
-from data.constants import REMARK_BOX_RECT, WINDOW_HEIGHT,WINDOW_WIDTH
+from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import IDLE,SELECTED
 from data.constants import PRIMARY_TEXT_COLOR
 
@@ -22,7 +22,7 @@ from data.constants import EASY_BUTTON_RECT,MEDIUM_BUTTON_RECT,HARD_BUTTON_RECT
 
 
 ## End page --------
-from data.constants import  END_EXIT_BUTTON_RECT,RETURN_BUTTON_RECT, SCORE_BOX_RECT, EXIT_BUTTON_RECT 
+from data.constants import  END_EXIT_BUTTON_RECT,RETURN_BUTTON_RECT, SCORE_BOX_RECT, EXIT_BUTTON_RECT,REMARK_BOX_RECT
 from data.constants import END_BG_COLOR,QUIZ_BG_COLOR,FINAL_BOX_COLOR
 
 
@@ -108,7 +108,7 @@ class FrontPage:
         self.title_box.draw_textbox('v-shesh: Quiz on disability',border_radius=10)
         self.mode_box.draw_textbox(f'Mode: {self.difficulty_text}',border_radius=10)
         
-        
+
         if self.popup:
             
             self.screen.blit(self.overlay,(0,0))

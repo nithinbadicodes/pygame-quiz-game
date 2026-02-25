@@ -13,17 +13,6 @@ pygame.init()
 pygame.font.init()
 
 
-### FRONT PAGE
-
-## Component 1 - Title,play,choose difficulty
-
-## Component 2 - Difficulty popup box
-
-
-### QUESTION PAGE
-
-## Component 1 - Navigation bar (Already a class)
-
 
 ### Navbar and its functionality
 class NavBar:
@@ -44,7 +33,7 @@ class NavBar:
         self.prev_button,self.next_button = get_prev_next_buttons()
         self.submit_button = Button(SUBMIT_RECT,text="Submit",font = font)
         self.hint_button = Button(HINT_RECT,text="HB",font=font,border_radius=50)
-###
+
 
         ## Rects
         self.container_rect = pygame.Rect(10,10,self.screen.get_width(),100)
