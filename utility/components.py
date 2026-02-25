@@ -1,5 +1,5 @@
 import pygame
-from utility.helper_functions import get_prev_next_buttons
+from utility.helper_functions import create_image, get_prev_next_buttons
 from utility.blueprints import Button,TextBox
 from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
@@ -42,14 +42,11 @@ class NavBar:
         self.popup_rect = QUIZ_POPUP_RECT
 
                 
-        self.hint_image = pygame.transform.scale(pygame.image.load('assets\sprites\\favpng_a182954b1849287febf1ee2bd73122ab.png'),
-                                    (self.hint_button.rect.width-15,
-                                     self.hint_button.rect.height - 15))
-
-        self.image_rect = self.hint_image.get_rect()
-        self.image_rect.center = (self.hint_button.rect.centerx,self.hint_button.rect.centery)
-
-
+        self.hint_image,self.image_rect = create_image('assets\sprites\\favpng_a182954b1849287febf1ee2bd73122ab.png',
+                                                       self.hint_button.rect.centerx,
+                                                       self.hint_button.rect.centery,
+                                                       self.hint_button.rect.width-15,
+                                                        self.hint_button.rect.height - 15)
         
         
         self.popup_textbox = TextBox(self.screen,
@@ -152,7 +149,7 @@ class NavBar:
         hint_event = self.hint_button.update(mouse_pos,mouse_pressed)
         self.hint_button.draw(self.screen)
         self.screen.blit(self.hint_image,self.image_rect)
-        
+
         return hint_event
 
 

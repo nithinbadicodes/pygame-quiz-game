@@ -46,3 +46,14 @@ def wrap_text(text, font, max_width):
         lines.append(current_line.strip())
 
     return lines
+
+
+
+def create_image(img_path,x,y,width,height):
+    loaded_image = pygame.image.load(img_path)
+    scaled_image = pygame.transform.scale(loaded_image,(width,height))
+
+    image_rect = scaled_image.convert_alpha().get_rect()
+    image_rect.center =  (x,y)
+
+    return scaled_image,image_rect
