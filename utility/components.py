@@ -32,7 +32,7 @@ class NavBar:
         # Buttons
         self.prev_button,self.next_button = get_prev_next_buttons()
         self.submit_button = Button(SUBMIT_RECT,text="Submit",font = font)
-        self.hint_button = Button(HINT_RECT,text="HB",font=font,border_radius=50)
+        self.hint_button = Button(HINT_RECT,text="",font=font,border_radius=50)
 
 
         ## Rects
@@ -41,7 +41,14 @@ class NavBar:
          
         self.popup_rect = QUIZ_POPUP_RECT
 
-        
+                
+        self.hint_image = pygame.transform.scale(pygame.image.load('assets\sprites\\favpng_a182954b1849287febf1ee2bd73122ab.png'),
+                                    (self.hint_button.rect.width-15,
+                                     self.hint_button.rect.height - 15))
+
+        self.image_rect = self.hint_image.get_rect()
+        self.image_rect.center = (self.hint_button.rect.centerx,self.hint_button.rect.centery)
+
 
         
         
@@ -144,7 +151,8 @@ class NavBar:
 
         hint_event = self.hint_button.update(mouse_pos,mouse_pressed)
         self.hint_button.draw(self.screen)
-
+        self.screen.blit(self.hint_image,self.image_rect)
+        
         return hint_event
 
 
