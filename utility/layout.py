@@ -105,14 +105,10 @@ class FrontPage:
 
 
         ## Need a textbox that centers the title automatically
-        self.title_box.draw_textbox('V-shesh: Quiz on disability',border_radius=10)
+        self.title_box.draw_textbox('v-shesh: Quiz on disability',border_radius=10)
         self.mode_box.draw_textbox(f'Mode: {self.difficulty_text}',border_radius=10)
         
         
-
-
-        
-            
         if self.popup:
             
             self.screen.blit(self.overlay,(0,0))
