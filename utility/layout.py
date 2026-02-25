@@ -241,6 +241,8 @@ class EndPage:
                                   FINAL_BOX_COLOR,
                                   PRIMARY_TEXT_COLOR)
         
+
+        ## End page buttons
         self.return_button = Button(RETURN_BUTTON_RECT,'Return to main menu',end_score_font)
         self.exit_button = Button(END_EXIT_BUTTON_RECT,'Exit game',end_score_font)
 

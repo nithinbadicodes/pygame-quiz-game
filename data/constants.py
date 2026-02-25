@@ -50,10 +50,10 @@ SURFACE_DARK_COLOR  = (18, 28, 60)   # title boxes / deeper panels
 SURFACE_COLOR       = (28, 40, 85)   # question box
 SURFACE_LIGHT_COLOR = (35, 50, 95)   # popup panels / elevated surfaces
 
-TITLE_BOX_COLOR    = SURFACE_DARK_COLOR
-QUESTION_BOX_COLOR = SURFACE_COLOR
-QUIZ_POPUP_COLOR   = SURFACE_LIGHT_COLOR
-FINAL_BOX_COLOR    = SURFACE_COLOR
+TITLE_BOX_COLOR    = SURFACE_DARK_COLOR     # Title box color (Start page)
+QUESTION_BOX_COLOR = SURFACE_COLOR          # Question box color (Quiz page)
+QUIZ_POPUP_COLOR   = SURFACE_LIGHT_COLOR    # Hint box popup color (Quiz page)
+FINAL_BOX_COLOR    = SURFACE_COLOR          # Remark box (End page)
 FRONT_POPUP_COLOR       = (25, 40, 80)
 
 
@@ -86,10 +86,6 @@ WHITE = (255, 255, 255)
 
 
 ## -------------------- FRONT PAGE ------------------------
-
-### CHANGES -----------
-# --- POPUP POSITION (overlay style) ---
-
 
 FRONT_PAGE_OFFSET = 50
 
@@ -177,7 +173,7 @@ MODE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFEST,WINDOW_HEIGHT - 150,
 
 
 
-### ------------------------ QUIZ PAGE ----------------------
+### ======================== QUIZ PAGE ===========================
 
 
 ## QUIZ MARGINS
@@ -195,7 +191,7 @@ NAV_BAR_HEIGHT = 50
 NAV_BAR_SPACING = 30
 
 
-### NAVBAR RECTS
+### ================ NAVBAR RECTS ========================
 PREV_RECT = pygame.Rect(QUIZ_LEFT_MARGIN,
                         QUIZ_TOP_MARGIN,
                         NAV_BUTTON_WIDTH,
@@ -217,12 +213,14 @@ QNO_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + NAV_BUTTON_WIDTH + NAV_BAR_SPACING,
 
 
 
-
+### QUESTION BOX DETAILS
 QUESTION_TOP_MARGIN = QUIZ_TOP_MARGIN + NAV_BAR_HEIGHT + CONTAINER_SPACING
 QUESTION_BOX_WIDTH = WINDOW_WIDTH - 2 * QUIZ_LEFT_MARGIN
 QUESTION_BOX_HEIGHT = 300
 
 
+
+### HINT POPUP RECT
 QUIZ_POPUP_RECT = pygame.Rect(
             2*QUIZ_LEFT_MARGIN,
             QUESTION_TOP_MARGIN + 100,
@@ -231,17 +229,16 @@ QUIZ_POPUP_RECT = pygame.Rect(
             )
 
 
-
+### ======================OPTIONS DETAILS===================
 COLUMN_GAP = 30
 ROW_GAP = 30
 
 
-# OPTIONS_TOP =  QUESTION_BOX_HEIGHT + NAV_BAR_HEIGHT  + 2* CONTAINER_SPACING
 OPTIONS_TOP =  QUESTION_TOP_MARGIN + QUESTION_BOX_HEIGHT + CONTAINER_SPACING
 AVAILABLE_HEIGHT = WINDOW_HEIGHT - OPTIONS_TOP  # remaining height for options area
 
 
-# ---- CALCULATIONS ----
+# ================CALCULATIONS=============
 
 button_width = (CONTAINER_WIDTH - COLUMN_GAP) // 2
 button_height = (AVAILABLE_HEIGHT - ROW_GAP - QUIZ_TOP_MARGIN) // 2
@@ -253,7 +250,7 @@ top_y = OPTIONS_TOP
 bottom_y = OPTIONS_TOP + button_height + ROW_GAP
 
 
-# ---- OPTION BUTTON RECTS ----
+# =================OPTION BUTTON RECTS====================
 
 OPTIONS_RECTS = [
     # Top Left
@@ -276,21 +273,26 @@ OPTIONS_RECTS = [
 
 
 
-### -----------------------  FINAL PAGE ---------------------
+### =======================  FINAL PAGE ==========================
 
 END_PAGE_OFFSET = 30
 
-## Rects
+## ==========Rects==========
+
+# SCORE BOX "You have score x/8"
 SCORE_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 200,
                              WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
-# DIFFICULTY_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 100,
-#                                   WINDOW_WIDTH-2*END_PAGE_OFFSET,120)
+
+# Remark box -> Based on score and difficulty
 REMARK_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 120,
                                   WINDOW_WIDTH-2*END_PAGE_OFFSET,160)
 
+# Return to main menu button
 RETURN_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 100,
                                  WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
 
+
+# Exit button -> Leave game
 END_EXIT_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 175,
                                    WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
 
