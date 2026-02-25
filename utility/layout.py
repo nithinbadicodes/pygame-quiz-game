@@ -108,9 +108,7 @@ class FrontPage:
         self.title_box.draw_textbox('V-shesh: Quiz on disability',border_radius=10)
         self.mode_box.draw_textbox(f'Mode: {self.difficulty_text}',border_radius=10)
         
-        if mouse_pressed:
-            if not self.popup_rect.collidepoint(mouse_pos):
-                self.popup = False
+        
 
 
         
@@ -124,6 +122,8 @@ class FrontPage:
             medium_event = self.medium_button.update(mouse_pos, mouse_pressed)
             hard_event = self.hard_button.update(mouse_pos, mouse_pressed)
 
+
+
             if easy_event == 'CLICK':
                 self.difficulty_text = self.easy_button.text
                 self.popup=False
@@ -135,10 +135,16 @@ class FrontPage:
                 self.popup=False
 
 
+            if mouse_pressed and not self.popup_rect.collidepoint(mouse_pos):
+                self.popup = False
+
             pygame.draw.rect(self.screen,FRONT_POPUP_COLOR,self.popup_rect,border_radius=12)
             self.easy_button.draw(self.screen)
             self.medium_button.draw(self.screen)
             self.hard_button.draw(self.screen)
+
+
+            return None, self.difficulty_text
             
 
 

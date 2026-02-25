@@ -73,10 +73,10 @@ medium_questions = [
         "options": [
             "An electronic display that helps visually impaired students read computer screens",
             "A tactile output that helps students use telephones",
-            "A communications system of touch that allows persons who are blind to read, review, and study the written word",
+            "Braille is a tactile symbols used by visually impaired people",
             "None of the above"
         ],
-        "answer": "A communications system of touch that allows persons who are blind to read, review, and study the written word",
+        "answer": "Braille is a tactile symbols used by visually impaired people",
         "hint": "It uses raised dots arranged in patterns that can be read by touch."
     },
     {

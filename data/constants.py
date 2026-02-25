@@ -129,7 +129,7 @@ font = pygame.font.SysFont('arial',20)
 
 title_font      = pygame.font.SysFont('segoe ui', 36)
 button_font     = pygame.font.SysFont('segoe ui', 17)
-option_button_font     = pygame.font.SysFont('segoe ui', 15)
+option_button_font     = pygame.font.SysFont('segoe ui', 16)
 front_button_font     = pygame.font.SysFont('segoe ui', 22)
 popup_button_font     = pygame.font.SysFont('segoe ui', 18)
 nav_button_font     = pygame.font.SysFont('segoe ui', 18)
