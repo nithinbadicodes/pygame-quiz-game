@@ -1,5 +1,6 @@
 import pygame
-from data.constants import WINDOW_WIDTH
+import sys
+import os
 from data.constants import PREV_RECT,NEXT_RECT
 from data.constants import nav_button_font
 
@@ -49,11 +50,18 @@ def wrap_text(text, font, max_width):
 
 
 
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 def create_image(img_path,x,y,width,height):
-    loaded_image = pygame.image.load(img_path)
+    loaded_image = pygame.image.load(resource_path(img_path))
     scaled_image = pygame.transform.scale(loaded_image,(width,height))
 
     image_rect = scaled_image.convert_alpha().get_rect()
     image_rect.center =  (x,y)
 
     return scaled_image,image_rect
+
+

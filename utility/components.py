@@ -56,7 +56,7 @@ class NavBar:
                                      self.popup_text_color)
         ### Overlay details
         self.overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
-        self.overlay.fill(QUIZ_POPUP_OVERLAY_COLOR)   # adjust alpha if needed
+        self.overlay.fill(QUIZ_POPUP_OVERLAY_COLOR)
 
 
 
