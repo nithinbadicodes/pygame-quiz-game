@@ -18,8 +18,11 @@ This project was created to:
 ### Game main menu page
 ![Main menu page](Game-main-menu-page.png)
 
+### Game quiz section page
+![Quiz section page](Game-quiz-section-page.png)
 
-
+### Game final result page
+![Final result page](Game-final-screen-page.png)
 
 ## Features
 
