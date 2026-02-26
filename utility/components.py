@@ -42,7 +42,7 @@ class NavBar:
         self.popup_rect = QUIZ_POPUP_RECT
 
                 
-        self.hint_image,self.image_rect = create_image('assets/sprites/favpng_a182954b1849287febf1ee2bd73122ab.png',
+        self.hint_image,self.image_rect = create_image('assets/icons/favpng_a182954b1849287febf1ee2bd73122ab.png',
                                                        self.hint_button.rect.centerx,
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
