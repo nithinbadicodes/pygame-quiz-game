@@ -15,6 +15,9 @@ This project was created to:
 
 ## Sample screenshots of the game
 
+### Game main menu page
+![Main menu page](Game-main-menu-page.png)
+
 
 
 
