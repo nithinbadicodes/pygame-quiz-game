@@ -202,7 +202,11 @@ class Options:
         for rect, text in zip(self.rects, text_options):
             self.buttons.append(Button(rect, text=text,font=option_button_font))
 
-    def draw(self, text_options, mouse_pos, mouse_pressed, saved_states):
+    def draw(self, 
+            text_options,
+            mouse_pos,
+            mouse_pressed, 
+            saved_states):
         # Create buttons once per question change
         if not self.buttons:
             self.create_buttons(text_options)

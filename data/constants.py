@@ -23,7 +23,7 @@ popup_button_font     = pygame.font.SysFont('segoe ui', 18)
 nav_button_font     = pygame.font.SysFont('segoe ui', 18)
 difficulty_font = pygame.font.SysFont('segoe ui', 30)
 question_box_font = pygame.font.SysFont('segoe ui', 26)
-end_score_font = pygame.font.SysFont('segoe ui',22)
+end_page_font = pygame.font.SysFont('segoe ui',22)
 default_font   = pygame.font.SysFont('segoe ui', 20)
 
 
@@ -291,13 +291,16 @@ SCORE_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 200,
 REMARK_BOX_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 - 120,
                                   WINDOW_WIDTH-2*END_PAGE_OFFSET,160)
 
+REVIEW_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 100,
+                                 WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
+
 # Return to main menu button
-RETURN_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 100,
+RETURN_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 175,
                                  WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
 
 
 # Exit button -> Leave game
-END_EXIT_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 175,
+END_EXIT_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 250,
                                    WINDOW_WIDTH-2*END_PAGE_OFFSET,50)
 
 

@@ -1,10 +1,10 @@
 import pygame
 import sys
 
-from data.constants import IDLE
+from data.constants import IDLE, SELECTED
 from data.constants import WINDOW_WIDTH,WINDOW_HEIGHT
 from utility.generate import QuestionGenerator
-from utility.layout import EndPage, QuizPage,FrontPage
+from utility.layout import EndPage, QuizPage,FrontPage, ReviewPage
 
 
 
@@ -42,6 +42,7 @@ score_increment = [0 for _ in range(TOTAL_PAGES)]
 FRONT_PAGE = "FRONT PAGE"
 QUIZ_PAGE = "QUIZ PAGE"
 FINAL_PAGE = "FINAL PAGE"
+REVIEW_PAGE = "REVIEW PAGE"
 
 current_page = FRONT_PAGE
 ### PAGE SWITCH DETAILS -----
@@ -82,7 +83,7 @@ while running:
     ### QUIZ PAGE CODE
     elif current_page == QUIZ_PAGE:
 
-        quiz.update(mouse_pos, mouse_pressed)
+        score_increment,answers,x = quiz.update(mouse_pos, mouse_pressed)
 
         if quiz.finished:
             TOTAL_SCORE = quiz.total_score
@@ -95,12 +96,24 @@ while running:
 
         action = endpage.update(mouse_pos, mouse_pressed)
 
+
+        if action == 'REVIEW ANSWERS':
+            print(score_increment)
+            print(answers)
+            print(quiz.correct_answers)
+            print(random_questions[0]['answer'])
+            answers_selected_states = [x[i] for i in range(TOTAL_PAGES)]
+        
+            print(answers_selected_states)
+            review_page = ReviewPage(screen,random_questions,answers,quiz.correct_answers,quiz.answers_selected)
+            current_page = REVIEW_PAGE
         if action == "GO_TO_FRONT":
             current_page = FRONT_PAGE
             first_page.difficulty_text = 'Easy'
         if action == 'EXIT GAME':
             running = False
-            break
+    elif current_page == 'REVIEW PAGE':
+        review_page.update(mouse_pos,mouse_pressed)
 
 
     pygame.display.flip()
