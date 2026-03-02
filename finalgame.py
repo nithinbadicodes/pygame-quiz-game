@@ -97,7 +97,7 @@ while running:
 
         if action == "GO_TO_FRONT":
             current_page = FRONT_PAGE
-            first_page.difficulty_text = 'Easy difficulty'
+            first_page.difficulty_text = 'Easy'
         if action == 'EXIT GAME':
             running = False
             break

@@ -38,7 +38,7 @@ class FrontPage:
         self.popup_rect = FRONT_POPUP_RECT
 
 
-        self.difficulty_text = 'Easy difficulty'
+        self.difficulty_text = 'Easy'
         self.popup = False
 
 
@@ -54,21 +54,21 @@ class FrontPage:
 
         ## BUTTONS --
         self.play_button = Button(PLAY_BUTTON_RECT,
-                                  'Press play',
+                                  'Play',
                                   front_button_font)
         self.difficulty_button = Button(DIFFICULTY_BUTTON_RECT,
-                                        'Choose difficulty',
+                                        'Choose difficulty level',
                                         front_button_font)
 
         ## popup difficulty buttons -> easy, medium,hard
         self.easy_button = Button(EASY_BUTTON_RECT,
-                                  'Easy difficulty',
+                                  'Easy',
                                   popup_button_font)
         self.medium_button = Button(MEDIUM_BUTTON_RECT,
-                                    'Medium difficulty',
+                                    'Medium',
                                     popup_button_font)
         self.hard_button = Button(HARD_BUTTON_RECT,
-                                  'Hard difficulty',
+                                  'Hard',
                                   popup_button_font)
 
         self.exit_button = Button(EXIT_BUTTON_RECT,
@@ -106,7 +106,7 @@ class FrontPage:
 
         ## Need a textbox that centers the title automatically
         self.title_box.draw_textbox('v-shesh: Quiz on disability',border_radius=10)
-        self.mode_box.draw_textbox(f'Mode: {self.difficulty_text}',border_radius=10)
+        self.mode_box.draw_textbox(f'Difficulty Level: {self.difficulty_text}',border_radius=10)
         
 
         if self.popup:
@@ -167,6 +167,7 @@ class QuizPage:
         self.q_page = "FRONT"
         self.qno = 0
         self.hint_open = False
+        self.hint_event = None
         self.random_questions = questions
 
         self.TOTAL_PAGES = len(self.random_questions)
@@ -197,7 +198,14 @@ class QuizPage:
             self.options.reset_buttons()
             self.hint_open = False
 
-        
+
+        self.hint_open = self.navbar.hint_box_popup(self.hint_event,self.hint_open,self.random_questions[self.qno]['hint'])
+        self.hint_event = self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
+
+        # if hint_event:
+        #     self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
+
+
         # ---------------- OPTIONS ----------------
         selected_index = self.options.draw(
             self.random_questions[self.qno]["options"],
@@ -206,9 +214,6 @@ class QuizPage:
             self.answers_selected[self.qno]
         )
 
-
-        hint_event = self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
-        self.hint_open = self.navbar.hint_box_popup(hint_event,self.hint_open,self.random_questions[self.qno]['hint'])
 
         # ---------------- HANDLE SELECTION ----------------
         if selected_index is not None:

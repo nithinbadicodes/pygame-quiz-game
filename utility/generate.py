@@ -16,9 +16,9 @@ class QuestionGenerator:
     def generate(self):
         questions = {}
 
-        questions['Easy difficulty'] = random.sample(self.easy_questions,self.total)
-        questions['Medium difficulty'] = random.sample(self.medium_questions,self.total)
-        questions['Hard difficulty'] = random.sample(self.hard_questions,self.total)
+        questions['Easy'] = random.sample(self.easy_questions,self.total)
+        questions['Medium'] = random.sample(self.medium_questions,self.total)
+        questions['Hard'] = random.sample(self.hard_questions,self.total)
 
 
         return questions
