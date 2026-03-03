@@ -1,7 +1,7 @@
 import pygame
 from utility.helper_functions import create_image, get_prev_next_buttons
 from utility.blueprints import Button,TextBox
-from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT
+from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
 from data.constants import QNO_RECT,SUBMIT_RECT
@@ -32,6 +32,7 @@ class NavBar:
         # Buttons
         self.prev_button,self.next_button = get_prev_next_buttons()
         self.submit_button = Button(SUBMIT_RECT,text="Submit",font = font)
+        self.return_button = Button(REVIEW_RETURN_BUTTON_RECT,text="Return",font = font)
         self.hint_button = Button(HINT_RECT,text="",font=font,border_radius=50)
 
 
@@ -61,7 +62,7 @@ class NavBar:
 
 
         
-    def prev_next_display(self, mouse_pos, mouse_pressed, page):
+    def prev_next_display(self, mouse_pos, mouse_pressed, page,review):
 
         if page != "FRONT":
             prev_event = self.prev_button.update(mouse_pos, mouse_pressed)
@@ -72,6 +73,9 @@ class NavBar:
         if page == "SUBMIT":
             nav_event = self.submit_button.update(mouse_pos, mouse_pressed)
             self.submit_button.draw(self.screen)
+        elif page == 'RETURN':
+            nav_event = self.return_button.update(mouse_pos,mouse_pressed)
+            self.return_button.draw(self.screen)
         else:
             
             nav_event = self.next_button.update(mouse_pos, mouse_pressed)
@@ -80,6 +84,8 @@ class NavBar:
         
 
         if nav_event == "CLICK":
+            if review:
+                return 'RETURN' if page == 'RETURN' else 'NEXT'
             return "SUBMIT" if page == "SUBMIT" else "NEXT"
 
         if prev_event == "CLICK":
@@ -89,8 +95,8 @@ class NavBar:
 
 
     ### Prev and next button functionality
-    def prev_next_final_display(self,mouse_pos,mouse_pressed,page,qno,TOTAL_PAGES):
-        nav_event = self.prev_next_display(mouse_pos,mouse_pressed,page)
+    def prev_next_final_display(self,mouse_pos,mouse_pressed,page,qno,TOTAL_PAGES,review_page=False):
+        nav_event = self.prev_next_display(mouse_pos,mouse_pressed,page,review=review_page)
     
 
 
@@ -107,7 +113,10 @@ class NavBar:
         if qno == 0:
             page = "FRONT"
         elif qno == TOTAL_PAGES - 1:
-            page = "SUBMIT"
+            if review_page:
+                page = "RETURN"
+            else:
+                page = "SUBMIT"
         else:
             page = "MIDDLE"
         return page,qno,nav_event

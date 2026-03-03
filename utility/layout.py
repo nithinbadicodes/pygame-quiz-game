@@ -154,7 +154,10 @@ class FrontPage:
 
 
 class QuizPage:
-    def __init__(self, screen, questions, difficulty_text):
+    def __init__(self, 
+                 screen, 
+                 questions, 
+                 difficulty_text):
         self.screen = screen
         self.questions = questions
         self.difficulty_text = difficulty_text
@@ -219,6 +222,7 @@ class QuizPage:
             self.answers_selected[self.qno] = [IDLE, IDLE, IDLE, IDLE]
             self.answers_selected[self.qno][selected_index] = SELECTED
             self.quiz_page_answers[self.qno] = self.options.buttons[selected_index].text
+
             if self.quiz_page_answers[self.qno] == self.correct_answers[self.qno]:
                 self.score_increment[self.qno] = 1
             else:
@@ -328,7 +332,12 @@ class EndPage:
 
 
 class ReviewPage:
-    def __init__(self,screen,questions,selected_answers,correct_answers,answers_selected_states):
+    def __init__(self,
+                 screen,
+                 questions,
+                 selected_answers,
+                 correct_answers,
+                 answers_selected_states):
         self.screen = screen
         self.questions = questions
         self.selected_answers = selected_answers
@@ -339,10 +348,15 @@ class ReviewPage:
         
         self.q_page = "FRONT"
         self.qno = 0
+        
+        self.hint_open = False
+        self.hint_event = None
 
         self.navbar = NavBar(screen, nav_button_font)
         self.question_box = QuestionBox(screen, question_box_font)
         self.options = Options(screen)
+
+        self.finished = False
 
 
 
@@ -352,7 +366,7 @@ class ReviewPage:
                                                                     mouse_pressed,
                                                                     self.q_page,
                                                                     self.qno,
-                                                                    self.TOTAL_PAGES)
+                                                                    self.TOTAL_PAGES,review_page=True)
         
         
 
@@ -365,6 +379,7 @@ class ReviewPage:
         # If question changed → rebuild buttons
         if nav_event in ("NEXT", "PREV"):
             self.options.reset_buttons()
+            self.hint_open = False
         
 
 
@@ -373,6 +388,11 @@ class ReviewPage:
         #     if self.options.buttons[i].text == self.correct_answers[i]:
         #         self.options.buttons[i].colors[IDLE] = (0,120,120)
         #         print(self.options.buttons[i].text)
+
+        
+
+        self.hint_open = self.navbar.hint_box_popup(self.hint_event,self.hint_open,self.questions[self.qno]['hint'])
+        self.hint_event = self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
 
 
 
@@ -383,6 +403,8 @@ class ReviewPage:
             self.answers_selected_states[self.qno]
         )
 
+        if nav_event == 'RETURN':
+            self.finished = True
 
 
     

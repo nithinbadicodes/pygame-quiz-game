@@ -305,4 +305,13 @@ END_EXIT_BUTTON_RECT = pygame.Rect(END_PAGE_OFFSET,WINDOW_HEIGHT//2 + 250,
 
 
 
+###====================REVIEW PAGE================================
 
+
+## SAME AS QUIZ PAGE -> FEW CHANGES
+
+## Return rect
+REVIEW_RETURN_BUTTON_RECT = pygame.Rect(WINDOW_WIDTH-(NAV_BUTTON_WIDTH+QUIZ_LEFT_MARGIN),
+                        QUIZ_TOP_MARGIN,
+                        NAV_BUTTON_WIDTH,
+                        NAV_BAR_HEIGHT)

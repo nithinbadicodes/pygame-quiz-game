@@ -115,6 +115,10 @@ while running:
     elif current_page == 'REVIEW PAGE':
         review_page.update(mouse_pos,mouse_pressed)
 
+        if review_page.finished:
+            print('hello')
+            current_page = FINAL_PAGE
+
 
     pygame.display.flip()
     clock.tick(60)
