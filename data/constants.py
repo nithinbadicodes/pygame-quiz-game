@@ -64,6 +64,9 @@ HOVER_COLOR    = (255, 170, 70)    # hovered button
 PRESSED_COLOR  = (220, 115, 20)     
 SELECTED_COLOR = (255, 200, 120)    # selected button
 
+# -------- Option colors --------
+CORRECT_COLOR = (0,255,0)
+WRONG_COLOR = (255,0,0)
 
 # -------- Overlays --------
 FRONT_OVERLAY_BG_COLOR      = (20, 30, 65, 140)   # subtle front tint

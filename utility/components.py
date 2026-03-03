@@ -1,7 +1,7 @@
 import pygame
 from utility.helper_functions import create_image, get_prev_next_buttons
 from utility.blueprints import Button,TextBox
-from data.constants import BUTTON_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT
+from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR, CORRECT_COLOR, DISABLED, IDLE, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT, SELECTED, WRONG_COLOR
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
 from data.constants import QNO_RECT,SUBMIT_RECT
@@ -27,10 +27,14 @@ class NavBar:
         self.text_color = BUTTON_TEXT_COLOR
         self.popup_text_color = PRIMARY_TEXT_COLOR
 
-        # Buttons
+        ## Buttons
+        # Prev and Next buttons
         self.prev_button,self.next_button = get_prev_next_buttons()
+        # Submit button for Quiz page
         self.submit_button = Button(SUBMIT_RECT,text="Submit",font = font)
+        # Return button for Review page
         self.return_button = Button(REVIEW_RETURN_BUTTON_RECT,text="Return",font = font)
+        # Hint button
         self.hint_button = Button(HINT_RECT,text="",font=font,border_radius=50)
 
 
@@ -40,13 +44,17 @@ class NavBar:
          
         self.popup_rect = QUIZ_POPUP_RECT
 
-                
-        self.hint_bulb_image,self.hint_bulb_image_rect = create_image('assets/icons/black_bulb.png',
+        # Icons path 
+        icon1,icon2 = 'assets/icons/black_cross.png','assets/icons/black_circle_white_cross.png'
+        bulb_icon = 'assets/icons/black_bulb.png'
+
+        # Hint icon details
+        self.hint_bulb_image,self.hint_bulb_image_rect = create_image(bulb_icon,
                                                        self.hint_button.rect.centerx,
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
                                                         self.hint_button.rect.height - 15)
-        self.hint_cross_image,self.hint_cross_image_rect = create_image('assets/icons/black_cross.png',
+        self.hint_cross_image,self.hint_cross_image_rect = create_image(icon2,
                                                        self.hint_button.rect.centerx,
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
@@ -211,25 +219,34 @@ class QuestionBox:
 ## Component 3 - Options container with options (Already a class)
 
 class Options:
-    def __init__(self, screen):
+    def __init__(self, screen,correct_answers,selected_answers,mode = "QUIZ"):
         self.screen = screen
         self.rects = OPTIONS_RECTS
         self.buttons = []
+
+        self.correct_answers = correct_answers
+        self.selected_answers = selected_answers
+        self.mode = mode
 
 
 
     def create_buttons(self, text_options):
         self.buttons.clear()
-
         for rect, text in zip(self.rects, text_options):
             self.buttons.append(Button(rect, text=text,font=option_button_font))
 
-    def draw(self, 
-            text_options,
-            mouse_pos,
-            mouse_pressed, 
-            saved_states):
-        # Create buttons once per question change
+
+
+
+    def draw(
+    self,
+    text_options,
+    mouse_pos,
+    mouse_pressed,
+    saved_states,
+    q_index
+):
+
         if not self.buttons:
             self.create_buttons(text_options)
 
@@ -237,20 +254,46 @@ class Options:
 
         for i, button in enumerate(self.buttons):
 
-            # Restore saved selection state
-            button.state = saved_states[i]
+            # ---------------- QUIZ MODE ----------------
+            if self.mode == "QUIZ":
 
-            event = button.update(mouse_pos, mouse_pressed)
+                button.state = saved_states[i]
 
-            if event == "CLICK":
-                selected_index = i
+                event = button.update(mouse_pos, mouse_pressed)
 
-            button.draw(self.screen)
+                if event == "CLICK":
+                    selected_index = i
+
+                button.draw(self.screen)
+
+            # ---------------- REVIEW MODE ----------------
+            elif self.mode == "REVIEW":
+
+                button.state = DISABLED  # no interaction
+
+                correct_answer = self.correct_answers[q_index]
+                selected_answer = self.selected_answers[q_index]
+
+                if text_options[i] == correct_answer:
+                    button.colors[IDLE] = CORRECT_COLOR
+
+                elif text_options[i] == selected_answer:
+                    button.colors[IDLE] = WRONG_COLOR
+
+                else:
+                    button.colors[IDLE] = BASE_COLOR
+
+                button.draw(self.screen)
 
         return selected_index
+    
+
+
+    
 
     def reset_buttons(self):
         self.buttons.clear()
+
 
 
 

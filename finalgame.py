@@ -73,8 +73,8 @@ while running:
         play_event, difficulty_text = first_page.update(mouse_pos, mouse_pressed)
 
         if play_event == "CLICK":
-            random_questions = Q_generator.generate()[difficulty_text]
-            quiz = QuizPage(screen, random_questions, difficulty_text)
+            questions = Q_generator.generate()[difficulty_text]
+            quiz = QuizPage(screen, questions, difficulty_text)
             current_page = QUIZ_PAGE
         if play_event == 'EXIT':
             running = False
@@ -83,11 +83,12 @@ while running:
     ### QUIZ PAGE CODE
     elif current_page == QUIZ_PAGE:
 
-        score_increment,answers,x = quiz.update(mouse_pos, mouse_pressed)
+        saved_states = quiz.update(mouse_pos, mouse_pressed)
 
         if quiz.finished:
             TOTAL_SCORE = quiz.total_score
             current_page = FINAL_PAGE
+            print(saved_states)
 
     ### FINAL PAGE CODE
     elif current_page == FINAL_PAGE:
@@ -98,25 +99,30 @@ while running:
 
 
         if action == 'REVIEW ANSWERS':
-            print(score_increment)
-            print(answers)
-            print(quiz.correct_answers)
-            print(random_questions[0]['answer'])
-            answers_selected_states = [x[i] for i in range(TOTAL_PAGES)]
+            # print(score_increment)
+            # print(quiz.correct_answers)
+            
+
+            # answers_selected_states = [saved_states[i] for i in range(TOTAL_PAGES)]
+            # print(answers_selected_states)
         
-            print(answers_selected_states)
-            review_page = ReviewPage(screen,random_questions,answers,quiz.correct_answers,quiz.answers_selected)
+            review_page = ReviewPage(screen,
+                                     questions,
+                                     quiz.correct_answers,
+                                     quiz.quiz_page_answers,
+                                     saved_states)
             current_page = REVIEW_PAGE
+
         if action == "GO_TO_FRONT":
             current_page = FRONT_PAGE
             first_page.difficulty_text = 'Easy'
         if action == 'EXIT GAME':
             running = False
+
     elif current_page == 'REVIEW PAGE':
         review_page.update(mouse_pos,mouse_pressed)
 
         if review_page.finished:
-            print('hello')
             current_page = FINAL_PAGE
 
 

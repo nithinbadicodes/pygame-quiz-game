@@ -162,21 +162,25 @@ class QuizPage:
         self.questions = questions
         self.difficulty_text = difficulty_text
 
+        self.random_questions = questions
+
+        self.TOTAL_PAGES = len(self.random_questions)
+
+
+        dummy_answers = [None]*self.TOTAL_PAGES
+
         # MOVE your QUESTION PAGE DETAILS variables here
         self.navbar = NavBar(screen, nav_button_font)
-        self.options = Options(screen)
+        self.options = Options(screen,dummy_answers,dummy_answers)
         self.question_box = QuestionBox(screen, question_box_font)
 
         self.q_page = "FRONT"
         self.qno = 0
         self.hint_open = False
         self.hint_event = None
-        self.random_questions = questions
-
-        self.TOTAL_PAGES = len(self.random_questions)
         self.score_increment = [0] * self.TOTAL_PAGES
         self.quiz_page_answers = [""] * self.TOTAL_PAGES
-        self.answers_selected = [[IDLE] * 4 for _ in range(self.TOTAL_PAGES)]
+        self.answers_selected_states = [[IDLE] * 4 for _ in range(self.TOTAL_PAGES)]
         self.total_score = 0
         self.finished = False
         self.correct_answers = [question['answer'] for question in self.random_questions]
@@ -217,27 +221,28 @@ class QuizPage:
             self.random_questions[self.qno]["options"],
             mouse_pos,
             mouse_pressed,
-            self.answers_selected[self.qno]
+            self.answers_selected_states[self.qno],
+            self.qno
         )
 
         # ---------------- HANDLE SELECTION ----------------
         if selected_index is not None:
-            self.answers_selected[self.qno] = [IDLE, IDLE, IDLE, IDLE]
-            self.answers_selected[self.qno][selected_index] = SELECTED
+            self.answers_selected_states[self.qno] = [IDLE, IDLE, IDLE, IDLE]
+            self.answers_selected_states[self.qno][selected_index] = SELECTED
             self.quiz_page_answers[self.qno] = self.options.buttons[selected_index].text
 
             if self.quiz_page_answers[self.qno] == self.correct_answers[self.qno]:
                 self.score_increment[self.qno] = 1
             else:
                 self.score_increment[self.qno] = 0
-            print(self.score_increment)
-            print(self.correct_answers)
-            print(self.quiz_page_answers)
+            # print(self.score_increment)
+            # print(self.correct_answers)
+            # print(self.quiz_page_answers)
         if nav_event == "SUBMIT":
             self.total_score = sum(self.score_increment)
             self.finished = True
-            return self.score_increment,self.quiz_page_answers,self.answers_selected
-        return None,None,None
+            return self.answers_selected_states
+        return None
 
 
 
@@ -338,15 +343,15 @@ class ReviewPage:
     def __init__(self,
                  screen,
                  questions,
-                 selected_answers,
                  correct_answers,
-                 answers_selected_states):
+                 selected_answers,
+                 saved_states):
         self.screen = screen
         self.questions = questions
-        self.selected_answers = selected_answers
         self.correct_answers = correct_answers
+        self.selected_answers = selected_answers
+        self.saved_states = saved_states
 
-        self.answers_selected_states = answers_selected_states
         self.TOTAL_PAGES = len(self.questions)
         
         self.q_page = "FRONT"
@@ -355,9 +360,12 @@ class ReviewPage:
         self.hint_open = False
         self.hint_event = None
 
-        self.navbar = NavBar(screen, nav_button_font)
-        self.question_box = QuestionBox(screen, question_box_font)
-        self.options = Options(screen)
+        self.navbar = NavBar(self.screen, nav_button_font)
+        self.question_box = QuestionBox(self.screen, question_box_font)
+        self.options = Options(self.screen,
+                               self.correct_answers,
+                               self.selected_answers,
+                               mode = "REVIEW")
 
         self.finished = False
 
@@ -406,7 +414,8 @@ class ReviewPage:
             self.questions[self.qno]["options"],
             mouse_pos,
             mouse_pressed,
-            self.answers_selected_states[self.qno]
+            self.saved_states[self.qno],
+            self.qno
         )
 
         if nav_event == 'RETURN':
