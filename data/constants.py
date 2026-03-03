@@ -65,8 +65,8 @@ PRESSED_COLOR  = (220, 115, 20)
 SELECTED_COLOR = (255, 200, 120)    # selected button
 
 # -------- Option colors --------
-CORRECT_COLOR = (0,255,0)
-WRONG_COLOR = (255,0,0)
+CORRECT_COLOR = (40,215,80)
+WRONG_COLOR = (215,40,80)
 
 # -------- Overlays --------
 FRONT_OVERLAY_BG_COLOR      = (20, 30, 65, 140)   # subtle front tint
