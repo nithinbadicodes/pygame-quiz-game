@@ -203,9 +203,13 @@ class QuizPage:
             self.options.reset_buttons()
             self.hint_open = False
 
-
-        self.hint_open = self.navbar.hint_box_popup(self.hint_event,self.hint_open,self.random_questions[self.qno]['hint'])
+        
+        
+        self.navbar.hint_box_popup(self.hint_event,
+                                   self.questions[self.qno]['hint'])
         self.hint_event = self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
+
+
 
 
         # ---------------- OPTIONS ----------------
@@ -215,7 +219,6 @@ class QuizPage:
             mouse_pressed,
             self.answers_selected[self.qno]
         )
-
 
         # ---------------- HANDLE SELECTION ----------------
         if selected_index is not None:
@@ -391,7 +394,10 @@ class ReviewPage:
 
         
 
-        self.hint_open = self.navbar.hint_box_popup(self.hint_event,self.hint_open,self.questions[self.qno]['hint'])
+        
+        self.navbar.hint_box_popup(self.hint_event,
+                                   self.questions[self.qno]['hint'])
+        
         self.hint_event = self.navbar.draw_hint_button(mouse_pos,mouse_pressed)
 
 

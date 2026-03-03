@@ -18,11 +18,9 @@ pygame.font.init()
 class NavBar:
     def __init__(self,screen,font):
         
-        
-        # self.hint_button = hint_button
         self.font = font
         self.screen = screen
-
+        self.hint_open=False
 
 
         self.popup_color = QUIZ_POPUP_COLOR
@@ -43,7 +41,12 @@ class NavBar:
         self.popup_rect = QUIZ_POPUP_RECT
 
                 
-        self.hint_image,self.image_rect = create_image('assets/icons/favpng_a182954b1849287febf1ee2bd73122ab.png',
+        self.hint_bulb_image,self.hint_bulb_image_rect = create_image('assets/icons/black_bulb.png',
+                                                       self.hint_button.rect.centerx,
+                                                       self.hint_button.rect.centery,
+                                                       self.hint_button.rect.width-15,
+                                                        self.hint_button.rect.height - 15)
+        self.hint_cross_image,self.hint_cross_image_rect = create_image('assets/icons/black_cross.png',
                                                        self.hint_button.rect.centerx,
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
@@ -103,8 +106,12 @@ class NavBar:
 
         if nav_event == "NEXT":
             qno += 1
+            
+            self.close_hint()
         elif nav_event == "PREV":
             qno -= 1
+            
+            self.close_hint()
 
         # Clamp qno
         qno = max(0, min(qno, TOTAL_PAGES - 1))
@@ -119,6 +126,7 @@ class NavBar:
                 page = "SUBMIT"
         else:
             page = "MIDDLE"
+            
         return page,qno,nav_event
 
 
@@ -138,28 +146,33 @@ class NavBar:
        
         
 
-    def hint_box_popup(self,hint_event,hint_open,text):
+    def hint_box_popup(self,hint_event,text):
         
         ## Render popup box
         if hint_event == "CLICK":
-            hint_open = not hint_open
+            self.hint_open = not self.hint_open
 
 
-        if hint_open:
+        if self.hint_open:
             self.screen.blit(self.overlay,(0,0))
             text = "Hint not available" if not text else text
             self.popup_textbox.draw_textbox(text=text,border_radius=20)
-     
-        return hint_open
     
 
     def draw_hint_button(self,mouse_pos,mouse_pressed):
 
         hint_event = self.hint_button.update(mouse_pos,mouse_pressed)
         self.hint_button.draw(self.screen)
-        self.screen.blit(self.hint_image,self.image_rect)
+        if self.hint_open:
+            self.screen.blit(self.hint_cross_image,self.hint_cross_image_rect)
+        else:
+            self.screen.blit(self.hint_bulb_image,self.hint_bulb_image_rect)
+
 
         return hint_event
+    
+    def close_hint(self):
+        self.hint_open = False
 
 
 
