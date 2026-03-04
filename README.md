@@ -22,7 +22,13 @@ This project was created to:
 ![Quiz section page](Game-quiz-section-page.png)
 
 ### Game final result page
-![Final result page](Game-final-screen-page.png)
+![Final screen page](game-final-screen-page2.png)
+
+### Game review page correct answer
+![Correct answer](game_review_page_correct.png)
+
+### Game review page incorrect answer
+![Incorrect answer](game_review_page_incorrect.png)
 
 ## Features
 
