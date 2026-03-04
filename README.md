@@ -16,19 +16,19 @@ This project was created to:
 ## Sample screenshots of the game
 
 ### Game main menu page
-![Main menu page](Game-main-menu-page.png)
+![Main menu page](screenshots/Game-main-menu-page.png)
 
 ### Game quiz section page
-![Quiz section page](Game-quiz-section-page.png)
+![Quiz section page](screenshots/Game-quiz-section-page.png)
 
 ### Game final result page
-![Final screen page](game-final-screen-page2.png)
+![Final screen page](screenshots/game-final-screen-page2.png)
 
 ### Game review page correct answer
 ![Correct answer](screenshots/game_review_page_correct.png)
 
 ### Game review page incorrect answer
-![Incorrect answer](game_review_page_incorrect.png)
+![Incorrect answer](screenshots/game_review_page_incorrect.png)
 
 ## Features
 
