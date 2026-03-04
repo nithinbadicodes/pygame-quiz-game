@@ -45,7 +45,7 @@ class NavBar:
         self.popup_rect = QUIZ_POPUP_RECT
 
         # Icons path 
-        icon1,icon2 = 'assets/icons/black_cross.png','assets/icons/black_circle_white_cross.png'
+        cross_icon1,cross_icon2 = 'assets/icons/black_cross.png','assets/icons/black_circle_white_cross.png'
         bulb_icon = 'assets/icons/black_bulb.png'
 
         # Hint icon details
@@ -54,7 +54,7 @@ class NavBar:
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
                                                         self.hint_button.rect.height - 15)
-        self.hint_cross_image,self.hint_cross_image_rect = create_image(icon2,
+        self.hint_cross_image,self.hint_cross_image_rect = create_image(cross_icon1,
                                                        self.hint_button.rect.centerx,
                                                        self.hint_button.rect.centery,
                                                        self.hint_button.rect.width-15,
