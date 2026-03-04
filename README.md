@@ -25,7 +25,7 @@ This project was created to:
 ![Final screen page](game-final-screen-page2.png)
 
 ### Game review page correct answer
-![Correct answer](game_review_page_correct.png)
+![Correct answer](screenshots/game_review_page_correct.png)
 
 ### Game review page incorrect answer
 ![Incorrect answer](game_review_page_incorrect.png)
