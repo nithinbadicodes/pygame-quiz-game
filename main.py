@@ -2,6 +2,7 @@ import pygame
 import asyncio
 
 from data.constants import WINDOW_WIDTH,WINDOW_HEIGHT
+
 from utility.generate import QuestionGenerator
 from utility.layout import EndPage, QuizPage,FrontPage, ReviewPage
 
@@ -16,7 +17,7 @@ pygame.display.set_caption('v-shesh: Quiz on disability')
 
 
 async def main():
-
+    
     first_page = FrontPage(screen)
     endpage = EndPage(screen)
 
@@ -59,11 +60,13 @@ async def main():
         ### FRONT PAGE CODE
         if current_page == FRONT_PAGE:
 
-            play_event, difficulty_text = first_page.update(mouse_pos, mouse_pressed)
+            play_event, difficulty_text = first_page.update(mouse_pos, 
+                                                            mouse_pressed)
 
             if play_event == "CLICK":
                 questions = Q_generator.generate()[difficulty_text]
-                quiz = QuizPage(screen, questions, difficulty_text)
+                quiz = QuizPage(screen, questions, 
+                                difficulty_text)
                 current_page = QUIZ_PAGE
             if play_event == 'EXIT':
                 running = False
@@ -72,19 +75,23 @@ async def main():
         ### QUIZ PAGE CODE
         elif current_page == QUIZ_PAGE:
 
-            saved_states = quiz.update(mouse_pos, mouse_pressed)
+            saved_states = quiz.update(mouse_pos, 
+                                       mouse_pressed)
 
             if quiz.finished:
                 TOTAL_SCORE = quiz.total_score
                 current_page = FINAL_PAGE
-                print(saved_states)
 
         ### FINAL PAGE CODE
         elif current_page == FINAL_PAGE:
 
-            endpage.draw(screen, TOTAL_SCORE, TOTAL_PAGES, difficulty_text)
+            endpage.draw(screen, 
+                         TOTAL_SCORE, 
+                         TOTAL_PAGES, 
+                         difficulty_text)
 
-            action = endpage.update(mouse_pos, mouse_pressed)
+            action = endpage.update(mouse_pos, 
+                                    mouse_pressed)
 
 
             if action == 'REVIEW ANSWERS':
@@ -103,7 +110,8 @@ async def main():
 
         ## REVIEW PAGE CODE
         elif current_page == 'REVIEW PAGE':
-            review_page.update(mouse_pos,mouse_pressed)
+            review_page.update(mouse_pos,
+                               mouse_pressed)
 
             if review_page.finished:
                 current_page = FINAL_PAGE

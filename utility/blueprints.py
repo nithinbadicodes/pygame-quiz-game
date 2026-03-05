@@ -132,7 +132,6 @@ class TextBox:
     def wrap_text(self,text,offset=20,line_spacing = 30):
         
         
-        # inner_rect = pygame.Rect(offset,offset,rect.get_width() - 2 * offset,rect.get_height() - 2*offset)
         inner_rect = get_rect(self.box_rect).inflate(-2*offset,-2*offset)
         words = text.split(" ")
         lines = []

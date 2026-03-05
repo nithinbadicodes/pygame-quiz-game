@@ -119,7 +119,7 @@ QUIZ_POPUP_OVERLAY_COLOR = (5, 10, 25, 180)    # darker modal overlay
 
 
 # -------- Text Colors --------
-TEXT_COLOR           = (180, 145, 170)        # default dummy text color
+TEXT_COLOR           = (180, 145, 170)   # default dummy text color
 PRIMARY_TEXT_COLOR   = (235, 240, 255)   # titles, question text
 SECONDARY_TEXT_COLOR = (190, 200, 230)   # softer labels
 BUTTON_TEXT_COLOR    = (25, 25, 35)      # text on orange buttons
@@ -156,12 +156,6 @@ PLAY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,
                                FRONT_BUTTON_HEIGHT)
 
 
-# ----Difficulty button above instruction button(old)---
-# DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
-
-# ----Exit button on front page removed (old)---------
-# EXIT_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
-
 
 ## TEXT BOX INFORMATION
 FRONT_TEXT_BOX_OFFSET = 20
@@ -183,18 +177,6 @@ INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,
                                       FRONT_BUTTON_HEIGHT)
 
 
-
-# ------------Prev position difficulty button above then instruction button (old) ---------
-# INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
-
-
-# -------Prev instruction button under difficulty text box (old) ------------
-# INSTRUCTION_INNER_BUTTON_WIDTH = 240
-# INSTRUCTION_INNER_BUTTON_HEIGHT = 40
-# INSTRUCTION_BUTTON_RECT = pygame.Rect(INSTRUCTION_BUTTON_LEFT,
-#                                       INSTRUCTION_BUTTON_TOP,
-#                                       INSTRUCTION_BUTTON_WIDTH,
-#                                       INSTRUCTION_BUTTON_HEIGHT)
 
 
 ## INSTRUCTION POPUP RECT DETAILS

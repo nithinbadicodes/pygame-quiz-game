@@ -48,7 +48,7 @@ def wrap_text(text, font, max_width):
     return lines
 
 
-
+## To make sure the image path is valid and goes through
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, relative_path)

@@ -3,10 +3,21 @@ import pygame
 from utility.helper_functions import create_image, get_prev_next_buttons
 from utility.blueprints import Button,TextBox
 
-from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR, CORRECT_COLOR, DISABLED, IDLE, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT, SELECTED, WRONG_COLOR
-from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
-from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
-from data.constants import QNO_RECT,SUBMIT_RECT
+
+from data.constants import DISABLED, IDLE
+
+# RECTS
+from data.constants import OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT
+from data.constants import QNO_RECT,SUBMIT_RECT,HINT_RECT
+
+# COLORS
+from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR,CORRECT_COLOR, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, WRONG_COLOR
+
+# DIMENSIONS
+from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH,QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT
+from data.constants import QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN
+
+# FONTS
 from data.constants import option_button_font
 
 
