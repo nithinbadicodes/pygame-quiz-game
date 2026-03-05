@@ -1,7 +1,6 @@
 import pygame
 import asyncio
 
-from data.constants import IDLE
 from data.constants import WINDOW_WIDTH,WINDOW_HEIGHT
 from utility.generate import QuestionGenerator
 from utility.layout import EndPage, QuizPage,FrontPage, ReviewPage
@@ -48,10 +47,6 @@ async def main():
 
 
     while running:
-        
-        
-
-
         
         mouse_pos = pygame.mouse.get_pos()
         mouse_pressed = False
@@ -110,6 +105,7 @@ async def main():
             if action == 'EXIT GAME':
                 running = False
 
+        ## REVIEW PAGE CODE
         elif current_page == 'REVIEW PAGE':
             review_page.update(mouse_pos,mouse_pressed)
 
@@ -119,17 +115,6 @@ async def main():
 
         pygame.display.flip()
         await asyncio.sleep(0)
-
-
-### Score testing changes below
-# print(score_increment)
-# print(f'Total score is {TOTAL_SCORE}/{TOTAL_PAGES}')
-
-
-# pygame.quit()
-# sys.exit()
-
-
 
 if __name__ == '__main__':
     asyncio.run(main())
