@@ -1,23 +1,24 @@
 import pygame
 
-
+from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from utility.components import NavBar,QuestionBox,Options
 from utility.blueprints import Button,TextBox
 
 
 from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR, INSTRUCTION_HINT_TEXTBOX, INSTRUCTION_NEXT_TEXTBOX, INSTRUCTION_PREV_TEXTBOX
-from data.constants import INSTRUCTION_BUTTON_RECT, INSTRUCTION_HINT_POPUP_TEXTBOX, INSTRUCTION_NEXT_POPUP_TEXTBOX, INSTRUCTION_POPUP_RECT, INSTRUCTION_PREV_POPUP_TEXTBOX, WINDOW_HEIGHT,WINDOW_WIDTH
+from data.constants import INSTRUCTION_HINT_POPUP_TEXTBOX, INSTRUCTION_NEXT_POPUP_TEXTBOX,  INSTRUCTION_PREV_POPUP_TEXTBOX
+from data.constants import INSTRUCTION_POPUP_RECT,INSTRUCTION_BUTTON_RECT
 from data.constants import IDLE,SELECTED
 from data.constants import PRIMARY_TEXT_COLOR
 
 ## Fonts ~
-from data.constants import front_button_font,popup_button_font,title_font,difficulty_font,instruction_font
+from data.constants import front_button_font,popup_button_font,title_font,difficulty_font,instruction_font,instruction_popup_font
 from data.constants import end_page_font,nav_button_font,question_box_font
  
 
 ## Front page --- 
 from data.constants import FRONT_POPUP_COLOR,FRONT_BG_COLOR,FRONT_OVERLAY_BG_COLOR,TITLE_BOX_COLOR
-from data.constants import FRONT_POPUP_RECT,TITLE_BOX_RECT,MODE_BOX_RECT,PLAY_BUTTON_RECT,DIFFICULTY_BUTTON_RECT
+from data.constants import  FRONT_POPUP_DIFFICULTY_RECT,TITLE_BOX_RECT,MODE_BOX_RECT,PLAY_BUTTON_RECT,DIFFICULTY_BUTTON_RECT
 from data.constants import EASY_BUTTON_RECT,MEDIUM_BUTTON_RECT,HARD_BUTTON_RECT
 
 
@@ -37,7 +38,7 @@ class FrontPage:
     
         self.screen = screen
 
-        self.popup_rect = FRONT_POPUP_RECT
+        self.popup_rect = FRONT_POPUP_DIFFICULTY_RECT
 
 
         self.difficulty_text = 'Easy'
@@ -89,33 +90,33 @@ class FrontPage:
         ## ----- Instruction and popup text boxes -----
 
         self.instruction_popup_prev_box = TextBox(self.screen,
-                                                  instruction_font,
+                                                  instruction_popup_font,
                                                   INSTRUCTION_PREV_POPUP_TEXTBOX,
                                                   BASE_COLOR,
                                                   BUTTON_TEXT_COLOR)
         self.instruction_popup_next_box = TextBox(self.screen,
-                                                  instruction_font,
+                                                  instruction_popup_font,
                                                   INSTRUCTION_NEXT_POPUP_TEXTBOX,
                                                   BASE_COLOR,
                                                   BUTTON_TEXT_COLOR)
         self.instruction_popup_hint_box = TextBox(self.screen,
-                                                  instruction_font,
+                                                  instruction_popup_font,
                                                   INSTRUCTION_HINT_POPUP_TEXTBOX,
                                                   BASE_COLOR,
                                                   BUTTON_TEXT_COLOR)
 
         self.instruction_prev_textbox = TextBox(self.screen,
-                                                instruction_font,
+                                                instruction_popup_font,
                                                 INSTRUCTION_PREV_TEXTBOX,
                                                 TITLE_BOX_COLOR,
                                                 PRIMARY_TEXT_COLOR)
         self.instruction_next_textbox = TextBox(self.screen,
-                                                instruction_font,
+                                                instruction_popup_font,
                                                 INSTRUCTION_NEXT_TEXTBOX,
                                                 TITLE_BOX_COLOR,
                                                 PRIMARY_TEXT_COLOR)
         self.instruction_hint_textbox = TextBox(self.screen,
-                                                instruction_font,
+                                                instruction_popup_font,
                                                 INSTRUCTION_HINT_TEXTBOX,
                                                 TITLE_BOX_COLOR,
                                                 PRIMARY_TEXT_COLOR)
@@ -341,9 +342,7 @@ class QuizPage:
                 self.score_increment[self.qno] = 1
             else:
                 self.score_increment[self.qno] = 0
-            # print(self.score_increment)
-            # print(self.correct_answers)
-            # print(self.quiz_page_answers)
+                
         if nav_event == "SUBMIT":
             self.total_score = sum(self.score_increment)
             self.finished = True

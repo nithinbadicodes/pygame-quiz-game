@@ -12,7 +12,7 @@ WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 700
 
 
-### FONTS
+### ----------- FONTS(for exe file, using PyInstaller) -----------
 font = pygame.font.SysFont('segoe ui',20)
 
 title_font      = pygame.font.SysFont('segoe ui', 36)
@@ -26,6 +26,50 @@ instruction_font = pygame.font.SysFont('segoe ui', 19)
 question_box_font = pygame.font.SysFont('segoe ui', 26)
 end_page_font = pygame.font.SysFont('segoe ui',22)
 default_font   = pygame.font.SysFont('segoe ui', 20)
+
+
+# # ---------- FONTS (for pygbag)----------
+
+# FONT_REGULAR = "assets/fonts/static/Inter/Inter_24pt-Regular.ttf"
+# FONT_SEMIBOLD = "assets/fonts/static/Inter/Inter_24pt-SemiBold.ttf"
+
+# font                = pygame.font.Font(FONT_REGULAR, 20)
+# title_font          = pygame.font.Font(FONT_SEMIBOLD, 36)
+# button_font         = pygame.font.Font(FONT_SEMIBOLD, 17)
+# option_button_font  = pygame.font.Font(FONT_REGULAR, 16)
+# front_button_font   = pygame.font.Font(FONT_SEMIBOLD, 22)
+# popup_button_font   = pygame.font.Font(FONT_REGULAR, 18)
+# nav_button_font     = pygame.font.Font(FONT_REGULAR, 18)
+# instruction_font     = pygame.font.Font(FONT_REGULAR, 19)
+# difficulty_font     = pygame.font.Font(FONT_SEMIBOLD, 30)
+# question_box_font   = pygame.font.Font(FONT_REGULAR, 26)
+# end_page_font      = pygame.font.Font(FONT_SEMIBOLD, 22)
+# default_font        = pygame.font.Font(FONT_REGULAR, 20)
+
+
+
+FONT_CONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Italic.ttf'
+FONT_CONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_Condensed-Light.ttf'
+FONT_CONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Lightitalic.ttf'
+FONT_CONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
+FONT_SEMICONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Italic.ttf'
+FONT_SEMICONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Light.ttf'
+FONT_SEMICONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Lightitalic.ttf'
+FONT_SEMICONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
+
+# font                = pygame.font.Font(FONT_REGULAR, 20)
+title_font          = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 40)
+button_font         = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 26)
+option_button_font  = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 17)
+front_button_font   = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 26)
+popup_button_font   = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 22)
+nav_button_font     = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 20)
+instruction_font     = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 26)
+instruction_popup_font     = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 19)
+difficulty_font     = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 30)
+question_box_font   = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 28)
+end_page_font      = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 22)
+default_font        = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 20)
 
 
 #### FIX --> ONE VARIABLES FOR DIFFERENT STATES 
@@ -233,6 +277,8 @@ POPUP_DIFFICULTY_HEIGHT = 150
 POPUP_RECT_PADDING = 20
 POPUP_COL_GAP = 20
 
+
+# calculated width to fit the buttons in the popup
 usable_width_popup_rect = POPUP_DIFFICULTY_WIDTH - 2 * POPUP_RECT_PADDING
 
 
@@ -244,7 +290,7 @@ POPUP_DIFFICULTY_BUTTON_HEIGHT = 70
 POPUP_LEFT = FRONT_PAGE_OFFSET  # matches difficulty button x
 
 
-FRONT_POPUP_RECT = pygame.Rect(
+FRONT_POPUP_DIFFICULTY_RECT = pygame.Rect(
     POPUP_LEFT,
     POPUP_DIFFICULTY_TOP,
     POPUP_DIFFICULTY_WIDTH,
@@ -356,8 +402,8 @@ QUIZ_POPUP_RECT = pygame.Rect(
 
 
 ### ======================OPTIONS DETAILS===================
-COLUMN_GAP = 30
-ROW_GAP = 30
+COLUMN_GAP = 18
+ROW_GAP = 18
 
 
 OPTIONS_TOP =  QUESTION_TOP_MARGIN + QUESTION_BOX_HEIGHT + CONTAINER_SPACING
