@@ -20,8 +20,9 @@ button_font     = pygame.font.SysFont('segoe ui', 17)
 option_button_font     = pygame.font.SysFont('segoe ui', 16)
 front_button_font     = pygame.font.SysFont('segoe ui', 22)
 popup_button_font     = pygame.font.SysFont('segoe ui', 18)
-nav_button_font     = pygame.font.SysFont('segoe ui', 18)
+nav_button_font     = pygame.font.SysFont('segoe ui', 22)
 difficulty_font = pygame.font.SysFont('segoe ui', 30)
+instruction_font = pygame.font.SysFont('segoe ui', 19)
 question_box_font = pygame.font.SysFont('segoe ui', 26)
 end_page_font = pygame.font.SysFont('segoe ui',22)
 default_font   = pygame.font.SysFont('segoe ui', 20)
@@ -161,18 +162,100 @@ HARD_BUTTON_RECT = pygame.Rect(HARD_BUTTON_X,
 
 ### NON POPUP RECTS
 PLAY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,WINDOW_HEIGHT//2 - 50,400,50)
-DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
-EXIT_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 100,400,50)
+DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
+
+# ----Difficulty button above instruction button---
+# DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
+
+# ----Exit button on front page removed---------
+# EXIT_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
 
 
 ## TEXT BOX INFORMATION
-FRONT_TEXT_BOX_OFFEST = 20
+FRONT_TEXT_BOX_OFFSET = 20
+FRONT_TEXT_BOX_TOP = 160
+TEXT_BOX_WIDTH = WINDOW_WIDTH-2*FRONT_TEXT_BOX_OFFSET
 ## Text box rects
-TITLE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFEST,160,
-                             WINDOW_WIDTH-2*FRONT_TEXT_BOX_OFFEST,100)
-MODE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFEST,WINDOW_HEIGHT - 150,
-                            WINDOW_WIDTH-2*FRONT_TEXT_BOX_OFFEST,80)
+TITLE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFSET,FRONT_TEXT_BOX_TOP,
+                             TEXT_BOX_WIDTH,100)
+MODE_BOX_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFSET,WINDOW_HEIGHT - 150,
+                            TEXT_BOX_WIDTH,80)
 
+## ========== INSTRUCTION BUTTON RECT ===========
+INSTRUCTION_BUTTON_WIDTH = 240
+INSTRUCTION_BUTTON_HEIGHT = 40
+INSTRUCTION_BUTTON_LEFT = WINDOW_WIDTH//2 - INSTRUCTION_BUTTON_WIDTH//2
+INSTRUCTION_BUTTON_TOP = WINDOW_HEIGHT - 50
+
+INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
+
+# ------------Prev position difficulty button above then instruction button---------
+# INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
+
+
+# -------Prev instruction button under difficulty text box------------
+# INSTRUCTION_BUTTON_RECT = pygame.Rect(INSTRUCTION_BUTTON_LEFT,
+#                                       INSTRUCTION_BUTTON_TOP,
+#                                       INSTRUCTION_BUTTON_WIDTH,
+#                                       INSTRUCTION_BUTTON_HEIGHT)
+
+
+## INSTRUCTION POPUP RECT DETAILS
+INSTRUCTION_POPUP_WIDTH = TEXT_BOX_WIDTH
+INSTRUCTION_POPUP_HEIGHT = WINDOW_HEIGHT - FRONT_TEXT_BOX_TOP - 150
+
+INSTRUCTION_POPUP_RECT = pygame.Rect(FRONT_TEXT_BOX_OFFSET,
+                                   FRONT_TEXT_BOX_TOP + 50,
+                                   INSTRUCTION_POPUP_WIDTH,
+                                   INSTRUCTION_POPUP_HEIGHT)
+
+INSTRUCTION_POPUP_BOX_WIDTH = 130
+INSTRUCTION_POPUP_BOX_HEIGHT = 50
+
+INSTRUCTION_PREV_BUTTON_TOP = FRONT_TEXT_BOX_TOP + 120
+INSTRUCTION_NEXT_BUTTON_TOP = INSTRUCTION_PREV_BUTTON_TOP + INSTRUCTION_POPUP_BOX_HEIGHT + 50
+INSTRUCTION_HINT_BUTTON_TOP = INSTRUCTION_NEXT_BUTTON_TOP + INSTRUCTION_POPUP_BOX_HEIGHT + 50
+
+INSTRUCTION_PREV_POPUP_TEXTBOX = pygame.Rect(FRONT_PAGE_OFFSET,
+                                        INSTRUCTION_PREV_BUTTON_TOP,
+                                        INSTRUCTION_POPUP_BOX_WIDTH,
+                                        INSTRUCTION_POPUP_BOX_HEIGHT)
+
+INSTRUCTION_NEXT_POPUP_TEXTBOX = pygame.Rect(FRONT_PAGE_OFFSET,
+                                        INSTRUCTION_NEXT_BUTTON_TOP,
+                                        INSTRUCTION_POPUP_BOX_WIDTH,
+                                        INSTRUCTION_POPUP_BOX_HEIGHT)
+
+INSTRUCTION_HINT_POPUP_TEXTBOX = pygame.Rect(FRONT_PAGE_OFFSET + 50,
+                                        INSTRUCTION_HINT_BUTTON_TOP,
+                                        50,
+                                        50)
+
+
+### Instructions to the right
+
+INSTRUCTIONS_TEXT_LEFT = FRONT_PAGE_OFFSET + 140
+
+INSTRUCTIONS_PREV_TEXT_TOP = INSTRUCTION_PREV_BUTTON_TOP
+INSTRUCTIONS_NEXT_TEXT_TOP = INSTRUCTION_NEXT_BUTTON_TOP
+INSTRUCTIONS_HINT_TEXT_TOP = INSTRUCTION_HINT_BUTTON_TOP
+
+INSTRUCTIONS_TEXT_WIDTH = INSTRUCTION_POPUP_BOX_WIDTH + 150
+INSTRUCTIONS_TEXT_HEIGHT = INSTRUCTION_POPUP_BOX_HEIGHT+25
+
+INSTRUCTION_PREV_TEXTBOX = pygame.Rect(INSTRUCTIONS_TEXT_LEFT,
+                                        INSTRUCTIONS_PREV_TEXT_TOP,
+                                        INSTRUCTIONS_TEXT_WIDTH,
+                                        INSTRUCTIONS_TEXT_HEIGHT)
+INSTRUCTION_NEXT_TEXTBOX = pygame.Rect(INSTRUCTIONS_TEXT_LEFT,
+                                        INSTRUCTIONS_NEXT_TEXT_TOP,
+                                        INSTRUCTIONS_TEXT_WIDTH,
+                                        INSTRUCTIONS_TEXT_HEIGHT)
+
+INSTRUCTION_HINT_TEXTBOX = pygame.Rect(INSTRUCTIONS_TEXT_LEFT,
+                                    INSTRUCTIONS_HINT_TEXT_TOP,
+                                    INSTRUCTIONS_TEXT_WIDTH,
+                                    INSTRUCTIONS_TEXT_HEIGHT)
 
 
 

@@ -5,12 +5,13 @@ from utility.components import NavBar,QuestionBox,Options
 from utility.blueprints import Button,TextBox
 
 
-from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
+from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR, INSTRUCTION_HINT_TEXTBOX, INSTRUCTION_NEXT_TEXTBOX, INSTRUCTION_PREV_TEXTBOX
+from data.constants import INSTRUCTION_BUTTON_RECT, INSTRUCTION_HINT_POPUP_TEXTBOX, INSTRUCTION_NEXT_POPUP_TEXTBOX, INSTRUCTION_POPUP_RECT, INSTRUCTION_PREV_POPUP_TEXTBOX, WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import IDLE,SELECTED
 from data.constants import PRIMARY_TEXT_COLOR
 
 ## Fonts ~
-from data.constants import front_button_font,popup_button_font,title_font,difficulty_font
+from data.constants import front_button_font,popup_button_font,title_font,difficulty_font,instruction_font
 from data.constants import end_page_font,nav_button_font,question_box_font
  
 
@@ -22,8 +23,9 @@ from data.constants import EASY_BUTTON_RECT,MEDIUM_BUTTON_RECT,HARD_BUTTON_RECT
 
 
 ## End page --------
-from data.constants import  END_EXIT_BUTTON_RECT,RETURN_BUTTON_RECT, SCORE_BOX_RECT, EXIT_BUTTON_RECT,REMARK_BOX_RECT,REVIEW_BUTTON_RECT
+from data.constants import  END_EXIT_BUTTON_RECT,RETURN_BUTTON_RECT, SCORE_BOX_RECT,REMARK_BOX_RECT,REVIEW_BUTTON_RECT
 from data.constants import END_BG_COLOR,QUIZ_BG_COLOR,FINAL_BOX_COLOR
+from utility.helper_functions import create_image
 
 
 
@@ -39,7 +41,7 @@ class FrontPage:
 
 
         self.difficulty_text = 'Easy'
-        self.popup = False
+        self.difficulty_popup = False
 
 
         
@@ -71,13 +73,73 @@ class FrontPage:
                                   'Hard',
                                   popup_button_font)
 
-        self.exit_button = Button(EXIT_BUTTON_RECT,
-                                  'Exit game',
-                                  front_button_font)
+        # self.exit_button = Button(EXIT_BUTTON_RECT,
+        #                           'Exit game',
+        #                           front_button_font)
         
 
+
+        ## Instruction button
+        self.instruction_popup = False
+
+        self.instruction_button = Button(INSTRUCTION_BUTTON_RECT,
+                                         'Click here for instructions',
+                                         instruction_font)
+        
+        self.instruction_popup_rect = INSTRUCTION_POPUP_RECT 
+
+        self.instruction_popup_prev_box = TextBox(self.screen,
+                                                  instruction_font,
+                                                  INSTRUCTION_PREV_POPUP_TEXTBOX,
+                                                  BASE_COLOR,
+                                                  BUTTON_TEXT_COLOR)
+        self.instruction_popup_next_box = TextBox(self.screen,
+                                                  instruction_font,
+                                                  INSTRUCTION_NEXT_POPUP_TEXTBOX,
+                                                  BASE_COLOR,
+                                                  BUTTON_TEXT_COLOR)
+        self.instruction_popup_hint_box = TextBox(self.screen,
+                                                  instruction_font,
+                                                  INSTRUCTION_HINT_POPUP_TEXTBOX,
+                                                  BASE_COLOR,
+                                                  BUTTON_TEXT_COLOR)
+
+        self.instruction_prev_textbox = TextBox(self.screen,
+                                                instruction_font,
+                                                INSTRUCTION_PREV_TEXTBOX,
+                                                TITLE_BOX_COLOR,
+                                                PRIMARY_TEXT_COLOR)
+        self.instruction_next_textbox = TextBox(self.screen,
+                                                instruction_font,
+                                                INSTRUCTION_NEXT_TEXTBOX,
+                                                TITLE_BOX_COLOR,
+                                                PRIMARY_TEXT_COLOR)
+        self.instruction_hint_textbox = TextBox(self.screen,
+                                                instruction_font,
+                                                INSTRUCTION_HINT_TEXTBOX,
+                                                TITLE_BOX_COLOR,
+                                                PRIMARY_TEXT_COLOR)
+
+
+
+
+
+        bulb_icon = 'assets/icons/black_bulb.png'
+
+        # Hint icon details
+        self.hint_bulb_image,self.hint_bulb_image_rect = create_image(bulb_icon,
+                                                       self.instruction_popup_hint_box.box_rect.centerx,
+                                                       self.instruction_popup_hint_box.box_rect.centery,
+                                                       self.instruction_popup_hint_box.box_rect.width - 15,
+                                                        self.instruction_popup_hint_box.box_rect.height - 15)
+
+
+
+
+
         ### Overlay details
-        self.overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
+        self.overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), 
+                                      pygame.SRCALPHA)
         self.overlay.fill(FRONT_OVERLAY_BG_COLOR)   # adjust alpha if needed
 
         
@@ -89,19 +151,25 @@ class FrontPage:
         difficulty_event = None
         exit_event = None
 
-        if not self.popup:
+        if not self.difficulty_popup or not self.instruction_popup:
             play_event = self.play_button.update(mouse_pos, mouse_pressed)
             difficulty_event = self.difficulty_button.update(mouse_pos, mouse_pressed)
-            exit_event = self.exit_button.update(mouse_pos,mouse_pressed)
+            # exit_event = self.exit_button.update(mouse_pos,mouse_pressed)
+
+            instructions_event = self.instruction_button.update(mouse_pos,mouse_pressed)
 
             if difficulty_event == 'CLICK':
-                self.popup = True
-            if exit_event == 'CLICK':
-                return 'EXIT',""
+                self.difficulty_popup = True
+            if instructions_event == 'CLICK':
+                self.instruction_popup = True
+            # if exit_event == 'CLICK':
+            #     return 'EXIT',""
+            
 
         self.play_button.draw(self.screen)
         self.difficulty_button.draw(self.screen)
-        self.exit_button.draw(self.screen)
+        # self.exit_button.draw(self.screen)
+        self.instruction_button.draw(self.screen)
 
 
         ## Need a textbox that centers the title automatically
@@ -109,7 +177,36 @@ class FrontPage:
         self.mode_box.draw_textbox(f'Difficulty Level: {self.difficulty_text}',border_radius=10)
         
 
-        if self.popup:
+
+        if self.instruction_popup:
+            self.screen.blit(self.overlay,(0,0))
+
+
+            if mouse_pressed and not self.instruction_popup_rect.collidepoint(mouse_pos):
+                self.instruction_popup = False
+
+            pygame.draw.rect(self.screen,
+                             FRONT_POPUP_COLOR,
+                             self.instruction_popup_rect,
+                             border_radius=12)
+            
+            
+
+            self.instruction_popup_prev_box.draw_textbox('Prev page')
+            self.instruction_popup_next_box.draw_textbox('Next page')
+            self.instruction_popup_hint_box.draw_textbox('',border_radius=50)
+
+            self.instruction_prev_textbox.draw_textbox('Click on this button to revisit the previous page')
+            self.instruction_next_textbox.draw_textbox('Click on this button to move forward to the next page')
+            self.instruction_hint_textbox.draw_textbox('Click on the bulb icon to view the hint for the question')
+
+            self.screen.blit(self.hint_bulb_image,self.hint_bulb_image_rect)
+
+            return None,None
+
+
+
+        if self.difficulty_popup:
             
             self.screen.blit(self.overlay,(0,0))
 
@@ -122,19 +219,22 @@ class FrontPage:
 
             if easy_event == 'CLICK':
                 self.difficulty_text = self.easy_button.text
-                self.popup=False
+                self.difficulty_popup=False
             if medium_event == 'CLICK':
                 self.difficulty_text = self.medium_button.text
-                self.popup=False
+                self.difficulty_popup=False
             if hard_event == 'CLICK':
                 self.difficulty_text = self.hard_button.text
-                self.popup=False
+                self.difficulty_popup=False
 
 
             if mouse_pressed and not self.popup_rect.collidepoint(mouse_pos):
-                self.popup = False
+                self.difficulty_popup = False
 
-            pygame.draw.rect(self.screen,FRONT_POPUP_COLOR,self.popup_rect,border_radius=12)
+            pygame.draw.rect(self.screen,
+                             FRONT_POPUP_COLOR,
+                             self.popup_rect,
+                             border_radius=12)
             self.easy_button.draw(self.screen)
             self.medium_button.draw(self.screen)
             self.hard_button.draw(self.screen)

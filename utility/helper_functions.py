@@ -11,8 +11,8 @@ def get_prev_next_buttons():
 
 
     ### PREVIOUS AND NEXT BUTTON
-    prev_button = Button(PREV_RECT,font=nav_button_font,text="Prev page")
-    next_button = Button(NEXT_RECT,font = nav_button_font,text="Next page") 
+    prev_button = Button(PREV_RECT,font=nav_button_font,text="Previous")
+    next_button = Button(NEXT_RECT,font = nav_button_font,text="Next") 
     return prev_button,next_button
 
 
