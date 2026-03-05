@@ -15,12 +15,11 @@ class QuestionGenerator:
 
     def generate(self):
         questions = {}
-
+        
+        ## TAKES RANDOM SAMPLES FROM RESPECTIVE QUESTIONS FILE
         questions['Easy'] = random.sample(self.easy_questions,self.total)
         questions['Medium'] = random.sample(self.medium_questions,self.total)
         questions['Hard'] = random.sample(self.hard_questions,self.total)
-
-
         return questions
     
 

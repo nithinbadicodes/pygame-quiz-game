@@ -12,23 +12,23 @@ WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 700
 
 
-### ----------- FONTS(for exe file, using PyInstaller) -----------
-font = pygame.font.SysFont('segoe ui',20)
+### ----------- FONTS(for exe file, using PyInstaller -- Segoe ui) -----------
+# font = pygame.font.SysFont('segoe ui',20)
 
-title_font      = pygame.font.SysFont('segoe ui', 36)
-button_font     = pygame.font.SysFont('segoe ui', 17)
-option_button_font     = pygame.font.SysFont('segoe ui', 16)
-front_button_font     = pygame.font.SysFont('segoe ui', 22)
-popup_button_font     = pygame.font.SysFont('segoe ui', 18)
-nav_button_font     = pygame.font.SysFont('segoe ui', 22)
-difficulty_font = pygame.font.SysFont('segoe ui', 30)
-instruction_font = pygame.font.SysFont('segoe ui', 19)
-question_box_font = pygame.font.SysFont('segoe ui', 26)
-end_page_font = pygame.font.SysFont('segoe ui',22)
-default_font   = pygame.font.SysFont('segoe ui', 20)
+# title_font      = pygame.font.SysFont('segoe ui', 36)
+# button_font     = pygame.font.SysFont('segoe ui', 17)
+# option_button_font     = pygame.font.SysFont('segoe ui', 16)
+# front_button_font     = pygame.font.SysFont('segoe ui', 22)
+# popup_button_font     = pygame.font.SysFont('segoe ui', 18)
+# nav_button_font     = pygame.font.SysFont('segoe ui', 22)
+# difficulty_font = pygame.font.SysFont('segoe ui', 30)
+# instruction_font = pygame.font.SysFont('segoe ui', 19)
+# question_box_font = pygame.font.SysFont('segoe ui', 26)
+# end_page_font = pygame.font.SysFont('segoe ui',22)
+# default_font   = pygame.font.SysFont('segoe ui', 20)
 
 
-# # ---------- FONTS (for pygbag)----------
+# # ---------- FONTS (for pygbag -- Inter)----------
 
 # FONT_REGULAR = "assets/fonts/static/Inter/Inter_24pt-Regular.ttf"
 # FONT_SEMIBOLD = "assets/fonts/static/Inter/Inter_24pt-SemiBold.ttf"
@@ -47,7 +47,7 @@ default_font   = pygame.font.SysFont('segoe ui', 20)
 # default_font        = pygame.font.Font(FONT_REGULAR, 20)
 
 
-
+## ------------------- FINALIZED FONT FOR PYGBAG IN BROWSER (OpenSans) ---------------------------
 FONT_CONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Italic.ttf'
 FONT_CONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_Condensed-Light.ttf'
 FONT_CONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Lightitalic.ttf'
@@ -74,9 +74,9 @@ default_font        = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 20)
 
 #### FIX --> ONE VARIABLES FOR DIFFERENT STATES 
 # STATES OF BUTTON
-IDLE = "idle"
-HOVERED = "hovered"
-PRESSED = "pressed"
+IDLE     = "idle"
+HOVERED  = "hovered"
+PRESSED  = "pressed"
 DISABLED = "disabled"
 SELECTED = "selected"
 
@@ -87,7 +87,7 @@ SELECTED = "selected"
 # -------- Foundation (Backgrounds) --------
 FRONT_BG_COLOR = (10, 18, 38)      # front page
 QUIZ_BG_COLOR  = (15, 20, 45)      # quiz page (slightly deeper)
-END_BG_COLOR = (10, 18, 38)       # end page
+END_BG_COLOR   = (10, 18, 38)       # end page
 
 
 # -------- Surface Panels (Non-Interactive UI) --------
@@ -99,7 +99,7 @@ TITLE_BOX_COLOR    = SURFACE_DARK_COLOR     # Title box color (Start page)
 QUESTION_BOX_COLOR = SURFACE_COLOR          # Question box color (Quiz page)
 QUIZ_POPUP_COLOR   = SURFACE_LIGHT_COLOR    # Hint box popup color (Quiz page)
 FINAL_BOX_COLOR    = SURFACE_COLOR          # Remark box (End page)
-FRONT_POPUP_COLOR       = (25, 40, 80)
+FRONT_POPUP_COLOR  = (25, 40, 80)
 
 
 
@@ -111,15 +111,15 @@ SELECTED_COLOR = (255, 200, 120)    # selected button
 
 # -------- Option colors --------
 CORRECT_COLOR = (40,215,80)
-WRONG_COLOR = (215,40,80)
+WRONG_COLOR   = (215,40,80)
 
 # -------- Overlays --------
-FRONT_OVERLAY_BG_COLOR      = (20, 30, 65, 140)   # subtle front tint
-QUIZ_POPUP_OVERLAY_COLOR    = (5, 10, 25, 180)    # darker modal overlay
+FRONT_OVERLAY_BG_COLOR   = (20, 30, 65, 140)   # subtle front tint
+QUIZ_POPUP_OVERLAY_COLOR = (5, 10, 25, 180)    # darker modal overlay
 
 
 # -------- Text Colors --------
-TEXT_COLOR = (180, 145, 170)        # default dummy text color
+TEXT_COLOR           = (180, 145, 170)        # default dummy text color
 PRIMARY_TEXT_COLOR   = (235, 240, 255)   # titles, question text
 SECONDARY_TEXT_COLOR = (190, 200, 230)   # softer labels
 BUTTON_TEXT_COLOR    = (25, 25, 35)      # text on orange buttons
@@ -156,10 +156,10 @@ PLAY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,
                                FRONT_BUTTON_HEIGHT)
 
 
-# ----Difficulty button above instruction button---
+# ----Difficulty button above instruction button(old)---
 # DIFFICULTY_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP,400,50)
 
-# ----Exit button on front page removed---------
+# ----Exit button on front page removed (old)---------
 # EXIT_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
 
 
@@ -184,11 +184,11 @@ INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,
 
 
 
-# ------------Prev position difficulty button above then instruction button---------
+# ------------Prev position difficulty button above then instruction button (old) ---------
 # INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
 
 
-# -------Prev instruction button under difficulty text box------------
+# -------Prev instruction button under difficulty text box (old) ------------
 # INSTRUCTION_INNER_BUTTON_WIDTH = 240
 # INSTRUCTION_INNER_BUTTON_HEIGHT = 40
 # INSTRUCTION_BUTTON_RECT = pygame.Rect(INSTRUCTION_BUTTON_LEFT,
@@ -401,7 +401,7 @@ QUIZ_POPUP_RECT = pygame.Rect(
             )
 
 
-### ======================OPTIONS DETAILS===================
+### ======================OPTIONS DETAILS=======================
 COLUMN_GAP = 18
 ROW_GAP = 18
 

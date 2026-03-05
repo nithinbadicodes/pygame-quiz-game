@@ -9,7 +9,6 @@ from data.constants import nav_button_font
 def get_prev_next_buttons():
     from utility.blueprints import Button
 
-
     ### PREVIOUS AND NEXT BUTTON
     prev_button = Button(PREV_RECT,font=nav_button_font,text="Previous")
     next_button = Button(NEXT_RECT,font = nav_button_font,text="Next") 
@@ -17,7 +16,7 @@ def get_prev_next_buttons():
 
 
 ### ------- Checks if type is pygame.Rect or pygame.Surface ----------
-### DO NOT CHANGE
+
 def get_rect(obj):
     if isinstance(obj, pygame.Rect):
         return obj
@@ -55,8 +54,13 @@ def resource_path(relative_path):
         return os.path.join(sys._MEIPASS, relative_path)
     return os.path.join(os.path.abspath("."), relative_path)
 
+
+
 def create_image(img_path,x,y,width,height):
+
+    ## Loading image from img_path
     loaded_image = pygame.image.load(resource_path(img_path))
+    ## Scale image using the transform.scale function
     scaled_image = pygame.transform.scale(loaded_image,(width,height))
 
     image_rect = scaled_image.convert_alpha().get_rect()

@@ -1,6 +1,8 @@
 import pygame
+
 from utility.helper_functions import create_image, get_prev_next_buttons
 from utility.blueprints import Button,TextBox
+
 from data.constants import BASE_COLOR, BUTTON_TEXT_COLOR, CORRECT_COLOR, DISABLED, IDLE, PRIMARY_TEXT_COLOR, QUESTION_BOX_COLOR, QUIZ_POPUP_COLOR, QUIZ_POPUP_OVERLAY_COLOR, HINT_RECT, OPTIONS_RECTS, QUIZ_POPUP_RECT, REVIEW_RETURN_BUTTON_RECT, SELECTED, WRONG_COLOR
 from data.constants import WINDOW_HEIGHT,WINDOW_WIDTH
 from data.constants import QUESTION_BOX_WIDTH,QUESTION_BOX_HEIGHT,QUIZ_LEFT_MARGIN,QUESTION_TOP_MARGIN

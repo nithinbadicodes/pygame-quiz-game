@@ -26,6 +26,7 @@ from data.constants import EASY_BUTTON_RECT,MEDIUM_BUTTON_RECT,HARD_BUTTON_RECT
 ## End page --------
 from data.constants import  END_EXIT_BUTTON_RECT,RETURN_BUTTON_RECT, SCORE_BOX_RECT,REMARK_BOX_RECT,REVIEW_BUTTON_RECT
 from data.constants import END_BG_COLOR,QUIZ_BG_COLOR,FINAL_BOX_COLOR
+
 from utility.helper_functions import create_image
 
 
@@ -227,8 +228,6 @@ class FrontPage:
                 return None,None
 
 
-            # elif mouse_pressed and not clicked_button and not self.popup_rect.collidepoint(mouse_pos):
-            #     self.difficulty_popup = False
 
             if (mouse_pressed
                 and not self.popup_rect.collidepoint(mouse_pos)
@@ -342,7 +341,7 @@ class QuizPage:
                 self.score_increment[self.qno] = 1
             else:
                 self.score_increment[self.qno] = 0
-                
+
         if nav_event == "SUBMIT":
             self.total_score = sum(self.score_increment)
             self.finished = True
@@ -498,16 +497,6 @@ class ReviewPage:
             self.hint_open = False
         
 
-
-        # # self.options.buttons[self.qno].state = 'disabled'
-        # for i in range(4):
-        #     if self.options.buttons[i].text == self.correct_answers[i]:
-        #         self.options.buttons[i].colors[IDLE] = (0,120,120)
-        #         print(self.options.buttons[i].text)
-
-        
-
-        
         self.navbar.hint_box_popup(self.hint_event,
                                    self.questions[self.qno]['hint'])
         
