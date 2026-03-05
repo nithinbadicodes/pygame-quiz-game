@@ -73,9 +73,6 @@ class FrontPage:
                                   'Hard',
                                   popup_button_font)
 
-        # self.exit_button = Button(EXIT_BUTTON_RECT,
-        #                           'Exit game',
-        #                           front_button_font)
         
 
 
@@ -87,6 +84,9 @@ class FrontPage:
                                          instruction_font)
         
         self.instruction_popup_rect = INSTRUCTION_POPUP_RECT 
+
+
+        ## ----- Instruction and popup text boxes -----
 
         self.instruction_popup_prev_box = TextBox(self.screen,
                                                   instruction_font,
@@ -138,9 +138,10 @@ class FrontPage:
 
 
         ### Overlay details
-        self.overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), 
+        self.overlay = pygame.Surface((WINDOW_WIDTH, 
+                                       WINDOW_HEIGHT), 
                                       pygame.SRCALPHA)
-        self.overlay.fill(FRONT_OVERLAY_BG_COLOR)   # adjust alpha if needed
+        self.overlay.fill(FRONT_OVERLAY_BG_COLOR) 
 
         
 
@@ -149,12 +150,10 @@ class FrontPage:
 
         play_event = None
         difficulty_event = None
-        exit_event = None
 
-        if not self.difficulty_popup or not self.instruction_popup:
+        if not self.difficulty_popup and not self.instruction_popup:
             play_event = self.play_button.update(mouse_pos, mouse_pressed)
             difficulty_event = self.difficulty_button.update(mouse_pos, mouse_pressed)
-            # exit_event = self.exit_button.update(mouse_pos,mouse_pressed)
 
             instructions_event = self.instruction_button.update(mouse_pos,mouse_pressed)
 
@@ -162,13 +161,10 @@ class FrontPage:
                 self.difficulty_popup = True
             if instructions_event == 'CLICK':
                 self.instruction_popup = True
-            # if exit_event == 'CLICK':
-            #     return 'EXIT',""
             
 
         self.play_button.draw(self.screen)
         self.difficulty_button.draw(self.screen)
-        # self.exit_button.draw(self.screen)
         self.instruction_button.draw(self.screen)
 
 
@@ -191,9 +187,9 @@ class FrontPage:
                              border_radius=12)
             
             
-
-            self.instruction_popup_prev_box.draw_textbox('Prev page')
-            self.instruction_popup_next_box.draw_textbox('Next page')
+            ## Drawing instruction popup text box -> Previous, Next, Hint
+            self.instruction_popup_prev_box.draw_textbox('Previous')
+            self.instruction_popup_next_box.draw_textbox('Next')
             self.instruction_popup_hint_box.draw_textbox('',border_radius=50)
 
             self.instruction_prev_textbox.draw_textbox('Click on this button to revisit the previous page')
@@ -215,20 +211,30 @@ class FrontPage:
             medium_event = self.medium_button.update(mouse_pos, mouse_pressed)
             hard_event = self.hard_button.update(mouse_pos, mouse_pressed)
 
-
-
             if easy_event == 'CLICK':
                 self.difficulty_text = self.easy_button.text
                 self.difficulty_popup=False
-            if medium_event == 'CLICK':
+                return None,None
+            elif medium_event == 'CLICK':
                 self.difficulty_text = self.medium_button.text
                 self.difficulty_popup=False
-            if hard_event == 'CLICK':
+                # return None,None
+            elif hard_event == 'CLICK':
                 self.difficulty_text = self.hard_button.text
                 self.difficulty_popup=False
+                
+                return None,None
 
 
-            if mouse_pressed and not self.popup_rect.collidepoint(mouse_pos):
+            # elif mouse_pressed and not clicked_button and not self.popup_rect.collidepoint(mouse_pos):
+            #     self.difficulty_popup = False
+
+            if (mouse_pressed
+                and not self.popup_rect.collidepoint(mouse_pos)
+                and not self.easy_button.rect.collidepoint(mouse_pos)
+                and not self.medium_button.rect.collidepoint(mouse_pos)
+                and not self.hard_button.rect.collidepoint(mouse_pos)
+                ):
                 self.difficulty_popup = False
 
             pygame.draw.rect(self.screen,
