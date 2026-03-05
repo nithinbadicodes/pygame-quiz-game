@@ -92,7 +92,7 @@ WHITE = (255, 255, 255)
 ## -------------------- FRONT PAGE ------------------------
 
 FRONT_PAGE_OFFSET = 50
-
+HINT_SIZE = 50
 
 FRONT_DIFFICULTY_TOP = (WINDOW_HEIGHT // 2) + 20
 
@@ -138,6 +138,8 @@ INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,
                                       FRONT_BUTTON_WIDTH,
                                       FRONT_BUTTON_HEIGHT)
 
+
+
 # ------------Prev position difficulty button above then instruction button---------
 # INSTRUCTION_BUTTON_RECT = pygame.Rect(FRONT_PAGE_OFFSET,FRONT_DIFFICULTY_TOP + 85,400,50)
 
@@ -179,8 +181,8 @@ INSTRUCTION_NEXT_POPUP_TEXTBOX = pygame.Rect(FRONT_PAGE_OFFSET,
 
 INSTRUCTION_HINT_POPUP_TEXTBOX = pygame.Rect(FRONT_PAGE_OFFSET + 50,
                                         INSTRUCTION_HINT_BUTTON_TOP,
-                                        50,
-                                        50)
+                                        HINT_SIZE,
+                                        HINT_SIZE)
 
 
 ### Instructions to the right
@@ -326,7 +328,8 @@ NEXT_RECT = SUBMIT_RECT = pygame.Rect(WINDOW_WIDTH-(NAV_BUTTON_WIDTH+QUIZ_LEFT_M
 
 HINT_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + 2*NAV_BUTTON_WIDTH + 2*NAV_BAR_SPACING,
                         QUIZ_TOP_MARGIN,
-                        50,50)
+                        HINT_SIZE,
+                        HINT_SIZE)
 
 QNO_RECT = pygame.Rect(QUIZ_LEFT_MARGIN + NAV_BUTTON_WIDTH + NAV_BAR_SPACING,
                        QUIZ_TOP_MARGIN,
