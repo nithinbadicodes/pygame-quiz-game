@@ -1,7 +1,7 @@
 import pygame
-import sys
+import asyncio
 
-from data.constants import IDLE, SELECTED
+from data.constants import IDLE
 from data.constants import WINDOW_WIDTH,WINDOW_HEIGHT
 from utility.generate import QuestionGenerator
 from utility.layout import EndPage, QuizPage,FrontPage, ReviewPage
@@ -17,116 +17,108 @@ pygame.display.set_caption('v-shesh: Quiz on disability')
 clock = pygame.time.Clock()
 
 
-first_page = FrontPage(screen)
-endpage = EndPage(screen)
 
 
 
-TOTAL_PAGES = 8
-TOTAL_SCORE = 0
+async def main():
+
+    first_page = FrontPage(screen)
+    endpage = EndPage(screen)
 
 
 
-### Question generator from generate.py file
-Q_generator = QuestionGenerator(total=TOTAL_PAGES)
-
-## answers selected
-answers_selected = [[IDLE]*4 for _ in range(TOTAL_PAGES)]
-# Score increment
-score_increment = [0 for _ in range(TOTAL_PAGES)]
+    TOTAL_PAGES = 8
+    TOTAL_SCORE = 0
 
 
 
-### PAGE SWITCH DETAILS -----
-FRONT_PAGE = "FRONT PAGE"
-QUIZ_PAGE = "QUIZ PAGE"
-FINAL_PAGE = "FINAL PAGE"
-REVIEW_PAGE = "REVIEW PAGE"
+    ### Question generator from generate.py file
+    Q_generator = QuestionGenerator(total=TOTAL_PAGES)
 
-current_page = FRONT_PAGE
-### PAGE SWITCH DETAILS -----
+    running = True
 
+    ### PAGE SWITCH DETAILS -----
+    FRONT_PAGE = "FRONT PAGE"
+    QUIZ_PAGE = "QUIZ PAGE"
+    FINAL_PAGE = "FINAL PAGE"
+    REVIEW_PAGE = "REVIEW PAGE"
 
-running = True
-
-
-while running:
-
-
-    
-    mouse_pos = pygame.mouse.get_pos()
-    mouse_pressed = False
+    current_page = FRONT_PAGE
+    ### PAGE SWITCH DETAILS -----
 
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            break
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            mouse_pressed = True
-    
-    
-    ### FRONT PAGE CODE
-    if current_page == FRONT_PAGE:
-
-        play_event, difficulty_text = first_page.update(mouse_pos, mouse_pressed)
-
-        if play_event == "CLICK":
-            questions = Q_generator.generate()[difficulty_text]
-            quiz = QuizPage(screen, questions, difficulty_text)
-            current_page = QUIZ_PAGE
-        if play_event == 'EXIT':
-            running = False
-            break
-
-    ### QUIZ PAGE CODE
-    elif current_page == QUIZ_PAGE:
-
-        saved_states = quiz.update(mouse_pos, mouse_pressed)
-
-        if quiz.finished:
-            TOTAL_SCORE = quiz.total_score
-            current_page = FINAL_PAGE
-            print(saved_states)
-
-    ### FINAL PAGE CODE
-    elif current_page == FINAL_PAGE:
-
-        endpage.draw(screen, TOTAL_SCORE, TOTAL_PAGES, difficulty_text)
-
-        action = endpage.update(mouse_pos, mouse_pressed)
-
-
-        if action == 'REVIEW ANSWERS':
-            # print(score_increment)
-            # print(quiz.correct_answers)
-            
-
-            # answers_selected_states = [saved_states[i] for i in range(TOTAL_PAGES)]
-            # print(answers_selected_states)
+    while running:
         
-            review_page = ReviewPage(screen,
-                                     questions,
-                                     quiz.correct_answers,
-                                     quiz.quiz_page_answers,
-                                     saved_states)
-            current_page = REVIEW_PAGE
-
-        if action == "GO_TO_FRONT":
-            current_page = FRONT_PAGE
-            first_page.difficulty_text = 'Easy'
-        if action == 'EXIT GAME':
-            running = False
-
-    elif current_page == 'REVIEW PAGE':
-        review_page.update(mouse_pos,mouse_pressed)
-
-        if review_page.finished:
-            current_page = FINAL_PAGE
+        
 
 
-    pygame.display.flip()
-    clock.tick(60)
+        
+        mouse_pos = pygame.mouse.get_pos()
+        mouse_pressed = False
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                break
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                mouse_pressed = True
+        
+        
+        ### FRONT PAGE CODE
+        if current_page == FRONT_PAGE:
+
+            play_event, difficulty_text = first_page.update(mouse_pos, mouse_pressed)
+
+            if play_event == "CLICK":
+                questions = Q_generator.generate()[difficulty_text]
+                quiz = QuizPage(screen, questions, difficulty_text)
+                current_page = QUIZ_PAGE
+            if play_event == 'EXIT':
+                running = False
+                break
+
+        ### QUIZ PAGE CODE
+        elif current_page == QUIZ_PAGE:
+
+            saved_states = quiz.update(mouse_pos, mouse_pressed)
+
+            if quiz.finished:
+                TOTAL_SCORE = quiz.total_score
+                current_page = FINAL_PAGE
+                print(saved_states)
+
+        ### FINAL PAGE CODE
+        elif current_page == FINAL_PAGE:
+
+            endpage.draw(screen, TOTAL_SCORE, TOTAL_PAGES, difficulty_text)
+
+            action = endpage.update(mouse_pos, mouse_pressed)
+
+
+            if action == 'REVIEW ANSWERS':
+                review_page = ReviewPage(screen,
+                                        questions,
+                                        quiz.correct_answers,
+                                        quiz.quiz_page_answers,
+                                        saved_states)
+                current_page = REVIEW_PAGE
+
+            if action == "GO_TO_FRONT":
+                current_page = FRONT_PAGE
+                first_page.difficulty_text = 'Easy'
+            if action == 'EXIT GAME':
+                running = False
+
+        elif current_page == 'REVIEW PAGE':
+            review_page.update(mouse_pos,mouse_pressed)
+
+            if review_page.finished:
+                current_page = FINAL_PAGE
+
+
+        pygame.display.flip()
+        await asyncio.sleep(0)
 
 
 ### Score testing changes below
@@ -134,5 +126,10 @@ while running:
 # print(f'Total score is {TOTAL_SCORE}/{TOTAL_PAGES}')
 
 
-pygame.quit()
-sys.exit()
+# pygame.quit()
+# sys.exit()
+
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
