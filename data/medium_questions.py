@@ -171,10 +171,9 @@ medium_questions = [
 
 { "question": "What are some common misconceptions and stereotypes about persons with disabilities?", 
 "options": ["All of the above", 
-            ### Too long option answers -> shorten them option 2,3,4
-            "Viewing persons with disabilities as burdens on their families or society rather than recognizing their potential contributions.", 
-            "Suspecting that some individuals might be pretending or exaggerating their disabilities to receive benefits or advantages.", 
-            "Feeling sorry for people with disabilities and treating them as objects of sympathy rather than as individuals with their own strengths and aspirations."], 
+            "Viewing persons with disabilities as burdens on their families or society", 
+            "Suspecting that individuals might be pretending or exaggerating their disabilities to receive benefits", 
+            "Feeling sorry for people with disabilities and treating them as objects of sympathy"], 
     "answer": "All of the above", 
     "hint": " Think about common negative assumptions society sometimes makes about disabled people." },
 

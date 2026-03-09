@@ -111,13 +111,12 @@ hard_questions = [
 
 { "question": "How do people who are born blind tell the difference between the denominations of the Canadian bills?", 
 
-### Too long option -> shorten option 2
-"options": ["In the upper right-hand corner, on the front side of the bill, there is braille.", 
-            "Each denomination is a different physical size, with higher-value bills being longer than lower-value ones." ## too long, 
-            "Each bill features a unique scent in the ink, such as maple for $100 and pine for $20.", 
-            "The holographic strip on the front of the bill has a distinct rough texture for each specific value."], 
-"answer": "In the upper right-hand corner, on the front side of the bill, there is braille.", 
-"hint": " A tactile writing system made of raised dots helps visually impaired people read information."
+    "options": ["In the upper right-hand corner, on the front side of the bill, there is braille.", 
+                "Higher-value bills have longer physical size than lower-value ones.", 
+                "Each bill features a unique scent in the ink, such as maple for $100 and pine for $20.", 
+                "The holographic strip on the front of the bill has a distinct rough texture for each specific value."], 
+    "answer": "In the upper right-hand corner, on the front side of the bill, there is braille.", 
+    "hint": " A tactile writing system made of raised dots helps visually impaired people read information."
  },
  { "question": "What event in 1925 forced Frida Kahlo to start painting seriously?", 
     "options": ["A fire in her home", 
