@@ -1,0 +1,36 @@
+v-Shesh Quiz game – INSTRUCTIONS
+
+Thank you for downloading and playing this quiz game!
+
+HOW TO RUN THE GAME
+
+1. Extract the downloaded .zip file (if the game was downloaded as a zip).
+2. Open the extracted folder.
+3. Double-click the file named main.exe to start the game.
+
+NOTE:
+Windows may show a warning the first time you run the file because it is an unsigned application.
+If this happens:
+• Click "More Info"
+• Then click "Run Anyway"
+
+GAME CONTROLS
+• Use your "mouse" to click buttons.
+• Select one of the four answer options for each question.
+• Use the "Previous button" in the top bar to go back to the previous question.
+
+GAME FLOW
+
+1. Click "Play" to start the quiz.
+2. Choose a "difficulty level" (Easy / Medium / Hard).
+3. Read the question and select the correct option.
+4. Continue through the quiz until completion.
+
+TIPS
+• Read the questions carefully before answering.
+• Try different difficulty levels for a bigger challenge.
+
+
+Enjoy the game!
+
+Created using Python and Pygame.

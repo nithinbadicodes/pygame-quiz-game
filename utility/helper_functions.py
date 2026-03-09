@@ -1,13 +1,13 @@
 import pygame
 import sys
 import os
-from data.constants import PREV_RECT,NEXT_RECT
-from data.constants import nav_button_font
 
 
 ### DO NOT CHANGE
 def get_prev_next_buttons():
     from utility.blueprints import Button
+    from data.constants import PREV_RECT,NEXT_RECT
+    from data.constants import nav_button_font
 
     ### PREVIOUS AND NEXT BUTTON
     prev_button = Button(PREV_RECT,font=nav_button_font,text="Previous")

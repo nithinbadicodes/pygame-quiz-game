@@ -1,5 +1,7 @@
 import pygame
 
+from utility.helper_functions import resource_path
+
 ### ==================== DO NOT MODIFY ============================
 
 pygame.init()
@@ -48,14 +50,14 @@ WINDOW_HEIGHT = 700
 
 
 ## ------------------- FINALIZED FONT FOR PYGBAG IN BROWSER (OpenSans) ---------------------------
-FONT_CONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Italic.ttf'
-FONT_CONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_Condensed-Light.ttf'
-FONT_CONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Lightitalic.ttf'
-FONT_CONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
-FONT_SEMICONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Italic.ttf'
-FONT_SEMICONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Light.ttf'
-FONT_SEMICONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Lightitalic.ttf'
-FONT_SEMICONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
+# FONT_CONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Italic.ttf'
+# FONT_CONDENSED_LIGHT = 'assets/fonts/opensans/static/OpenSans_Condensed-Light.ttf'
+# FONT_CONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_Condensed-Lightitalic.ttf'
+# FONT_CONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
+# FONT_SEMICONDENSED_ITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Italic.ttf'
+FONT_SEMICONDENSED_LIGHT = resource_path('assets/fonts/opensans/static/OpenSans_SemiCondensed-Light.ttf')
+# FONT_SEMICONDENSED_LIGHTITALIC = 'assets/fonts/opensans/static/OpenSans_SemiCondensed-Lightitalic.ttf'
+# FONT_SEMICONDENSED_REGULAR = 'assets/fonts/opensans/static/OpenSans_Condensed-Regular.ttf'
 
 # font                = pygame.font.Font(FONT_REGULAR, 20)
 title_font          = pygame.font.Font(FONT_SEMICONDENSED_LIGHT, 40)
