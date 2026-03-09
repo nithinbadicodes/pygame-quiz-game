@@ -16,7 +16,7 @@ This project was created to:
 ## Sample screenshots of the game
 
 ### Game main menu page
-![Main menu page](screenshots/Game-main-menu-page.png)
+![Main menu page](screenshots/Game-main-menu-page-updated.png)
 
 ### Game quiz section page
 ![Quiz section page](screenshots/Game-quiz-section-page.png)
