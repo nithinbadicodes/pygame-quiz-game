@@ -155,7 +155,82 @@ medium_questions = [
         ],
         "answer": "Cerebral Palsy",
         "hint": "This condition affects movement, muscle tone, and posture due to early brain damage."
-    }
+    },
+    { "question": "When interacting with people who have disabilities which of the following are acceptable?", 
+    "options": ["Leading someone with a visual impairment after having first asked for their permission", 
+                "Helping a person who stutters finish their words or sentences", 
+                "Help someone by pushing their manual chair", 
+                "Talking loudly or slowly to someone with a hearing impairment"], 
+    "answer": "Leading someone with a visual impairment after having first asked for their permission", 
+    "hint": " Good disability etiquette means asking before offering physical assistance." },
+
+{ "question": "When referring to those under the classification of disability what phrases are generally acceptable?", 
+    "options": ["Disabled", "Autistic child", "Hard of hearing", "Handicapped"], 
+    "answer": "Hard of hearing", 
+    "hint": "The respectful term refers to people who have partial hearing loss." },
+
+{ "question": "What are some common misconceptions and stereotypes about persons with disabilities?", 
+"options": ["All of the above", 
+            ### Too long option answers -> shorten them option 2,3,4
+            "Viewing persons with disabilities as burdens on their families or society rather than recognizing their potential contributions.", 
+            "Suspecting that some individuals might be pretending or exaggerating their disabilities to receive benefits or advantages.", 
+            "Feeling sorry for people with disabilities and treating them as objects of sympathy rather than as individuals with their own strengths and aspirations."], 
+    "answer": "All of the above", 
+    "hint": " Think about common negative assumptions society sometimes makes about disabled people." },
+
+    { "question": "How many people in the world are disabled?", 
+    "options": ["1 in 10", 
+                "1 in 6", 
+                "1 in 20", 
+                "1 in 100"], 
+    "answer": "1 in 6", 
+    "hint": "Global disability statistics are often expressed as a fraction of the population." },
+
+{ "question": "What is the most feared disability?", 
+    "options": ["Diabetes", 
+                "Autism Spectrum Disorders", 
+                "Alzheimer’s disease", 
+                "Quadriplegia"], 
+    "answer": "Alzheimer’s disease", 
+    "hint": "This condition involves progressive memory loss and cognitive decline." },
+
+    { "question": "What was the main subject of most of Frida Kahlo's paintings?", 
+    "options": ["Self Portraits", 
+                "The Humming bird", 
+                "The Mexican Revolution", 
+                "Portraits of her mother"], 
+    "answer": "Self Portraits", 
+    "hint": "She was bedridden after the accident when she was 18. She was inspired to start painting shortly after." },
+
+{ "question": "What title is often used to describe Judy Heumann's role in the disability rights movement?", 
+    "options": ["The Architect of the ADA", 
+                "The Mother of the Disability Rights Movement", 
+                "The Founder of the Special Olympics", 
+                "The First Lady of Special Education"], 
+    "answer": "The Mother of the Disability Rights Movement", 
+    "hint": "She was a major leader in the disability rights movement and helped fight for accessibility laws." },
+
+    { "question": "In the 2014 film Margarita with a Straw, the protagonist played by Kalki Koechlin has which condition?", 
+    "options": ["Autism", 
+                "Cerebral Palsy", 
+                "Down syndrome", 
+                "Muscular dystrophy"], 
+    "answer": "Cerebral Palsy", 
+    "hint": "The film follows a young woman in India living with a motor-related neurological condition." },
+
+
+{ "question": "What year did the first Paralympic Games take place?", 
+    "options": ["1840", "1976", "1967", "1960"], 
+    "answer": "1960", 
+    "hint": "The first official Paralympic Games were held in Rome." },
+
+{ "question": "In which country did judo make its Paralympic debut?", 
+    "options": ["Japan", "Germany", "South Korea", "Canada"], 
+    "answer": "South Korea", 
+    "hint": "This martial art sport debuted for visually impaired athletes in the Paralympics." },
+
+
+
 ]
 
 

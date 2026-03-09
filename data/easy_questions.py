@@ -189,7 +189,36 @@ easy_questions = [
         ],
         "answer": "Anxiety disorder",
         "hint": "A phobia is a type of anxiety-related condition."
-    }
+    },
+    { "question": "What’s the International Symbol of Access (ISA)?", 
+    "options": ["A person with a walking stick", 
+                "A wheelchair icon", 
+                "A hearing aid symbol", 
+                "A dove icon"], 
+    "answer": "A wheelchair icon", 
+    "hint": "This accessibility symbol is commonly seen on parking spaces and building entrances." },
+
+{ "question": "Which of these could be examples of non-visible disabilities?", 
+    "options": ["Autism", 
+                "Dyslexia", 
+                "All of the above", 
+                "Chronic pain"], 
+    "answer": "All of the above", 
+    "hint": "Some disabilities are not immediately visible to others." },
+    { "question": "Arthritis affects a person’s ability to:", 
+    "options": ["Walk", 
+                "Ride a bike", 
+                "Lift", 
+                "All of the above"], 
+    "answer": "All of the above", 
+    "hint": "This condition affects joints and movement in everyday activities." },
+    
+{ "question": "Which of these Indian films features a character with Dyslexia?", 
+    "options": ["Black", "Iqbal", "Taare Zameen Par", "Barfi!"], 
+    "answer": "Taare Zameen Par", 
+    "hint": "This popular Indian film tells the story of a child struggling with reading difficulties." },
+
+
 ]
 
 
