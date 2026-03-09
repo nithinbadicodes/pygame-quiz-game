@@ -121,5 +121,4 @@ async def main():
         await asyncio.sleep(0)
 
 if __name__ == '__main__':
-    print('hello world')
     asyncio.run(main())
